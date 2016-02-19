@@ -8,7 +8,7 @@ var express = require('express'),
 
 // require('dotenv').config();
 require('locus');
-
+//test
 var auth = require('./routes/auth');
 
 
