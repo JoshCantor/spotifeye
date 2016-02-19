@@ -9,6 +9,8 @@ var express = require('express'),
 require('locus');
 
 app.set('view engine', 'ejs');
+
+app.use(express.static('/views'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan('tiny'));
 
@@ -30,7 +32,7 @@ app.get("/", function(req, res, next) {
 });
 
 app.get('/dashboard', function(req, res, next) {
-    res.render('/views/index');
+    res.render(__dirname + '/views/index');
 });
 
 
