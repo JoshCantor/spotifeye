@@ -21,12 +21,9 @@ app.get("/", function(req, res, next) {
         }
         if (!error && response.statusCode === 200) {
             var data = JSON.parse(body);
-            knex('songs').insert({json_data: data})
-            .then(function() {
-            	knex('songs').where({id: 1})
-                .then(function(data) {
-                    console.log('data',data);
-                })
+            knex('songs').insert({json_data: data}).returning('json_data')
+            .then(function(json) {
+            	console.log('json', json);
             });
         }
     });
