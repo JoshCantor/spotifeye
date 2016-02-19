@@ -3,7 +3,8 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	morgan = require('morgan'),
 	knex = require('../db/knex');
-
+	
+require('dotenv').config();
 require('locus');
 
 app.use(bodyParser.urlencoded({extended:true}));
