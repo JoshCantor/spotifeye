@@ -2,7 +2,7 @@
   "name": "spotifeye",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,7 @@
     "knex": "^0.10.0",
     "locus": "^1.2.0",
     "morgan": "^1.7.0",
-    "pg": "^4.4.6"
+    "pg": "^4.4.6",
+    "request": "^2.69.0"
   }
 }
