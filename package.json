@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "dotenv": "^2.0.0",
+    "knex": "^0.10.0",
+    "locus": "^1.2.0",
+    "morgan": "^1.7.0",
+    "pg": "^4.4.6"
+  }
 }
