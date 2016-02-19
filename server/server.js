@@ -2,7 +2,7 @@ var express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	morgan = require('morgan'),
-	knex = require('../db/knex'),
+	knex = require('./db/knex.js'),
 	request = require('request');
 
 require('dotenv').config();
