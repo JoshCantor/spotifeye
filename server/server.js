@@ -29,6 +29,10 @@ app.get("/", function(req, res, next) {
     });
 });
 
+app.get('/dashboard', function(req, res, next) {
+    res.render('/views/index');
+});
+
 
 app.listen(3000, function() {
 	console.log('listening on 3000...');
