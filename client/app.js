@@ -9,7 +9,7 @@ app.config(function($routeProvider) {
 });
 
 app.controller('D3', function($scope) {
-	// $scope.test = 'test';
+	$scope.test = 'test';
 });
 
 // app.directive('d3', function() {
