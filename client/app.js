@@ -8,8 +8,15 @@ app.config(function($routeProvider) {
 	});
 });
 
-app.controller('D3', function($scope) {
-	$scope.test = 'test';
+app.controller('D3', function($scope, $http) {
+	$scope.test = 'this';
+	$scope.albumData = [];
+
+	$scope.getAlbumData = function() {
+		$http.get('/dashboard').then(function(data){
+			$scope.albumData = data;
+		});
+	}
 });
 
 // app.directive('d3', function() {

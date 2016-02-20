@@ -33,10 +33,15 @@ app.get("/", function(req, res, next) {
 //     });
 // });
 
-// app.get('/dashboard', function(req, res, next) {
-//     knex('songs').then(function(albumsData){
-//     });
-// });
+app.get('/dashboard', function(req, res, next) {
+    knex('songs').then(function(data){
+    	var ids = data.map(function(album) {
+    		return album.id;
+    	});
+    	console.log(ids);
+    	res.json(ids);
+    });
+});
 
 
 app.listen(3000, function() {
