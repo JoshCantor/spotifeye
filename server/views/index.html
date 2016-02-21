@@ -3,9 +3,38 @@
 <head>
 	<meta charset="UTF-8">
 	<title>d3</title>
+	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
 	<script type="text/javascript" src="/client/app.js"></script>
+	<style>
+
+	.node {
+	  cursor: pointer;
+	}
+
+	.node:hover {
+	  stroke: #000;
+	  stroke-width: 1.5px;
+	}
+
+	.node--leaf {
+	  fill: white;
+	}
+
+	.label {
+	  font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	  text-anchor: middle;
+	  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+	}
+
+	.label,
+	.node--root,
+	.node--leaf {
+	  pointer-events: none;
+	}
+
+	</style>
 </head>
 <body>
 	<h1>Yay!</h1>
