@@ -13,13 +13,13 @@ app.config(function($routeProvider) {
 });
 
 app.controller('BubbleController', function($scope, $http, $location) {
-	$scope.albumData = [];
+	// $scope.albumData = [];
 
-	$scope.getAlbumData = function() {
-		$http.get('/dashboard').then(function(data){
-			$scope.albumData = data;
-		});
-	}
+	// $scope.getAlbumData = function() {
+	// 	$http.get('/dashboard').then(function(data){
+	// 		$scope.albumData = data;
+	// 	});
+	// }
 
 	$scope.goToEdge = function() {
 		//remove svg from view
@@ -29,28 +29,26 @@ app.controller('BubbleController', function($scope, $http, $location) {
 });
 
 app.directive('bubbles', function(bubbleService) {
-	
-	var margin = 20,
-	    diameter = 960;
-
-	var color = d3.scale.linear()
-	    .domain([-1, 5])
-	    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
-	    .interpolate(d3.interpolateHcl);
-
-	var pack = d3.layout.pack()
-	    .padding(2)
-	    .size([diameter - margin, diameter - margin])
-	    .value(function(d) { return d.size; })
-
-	var svg = d3.select("body").append("svg")
-	    .attr("width", diameter)
-	    .attr("height", diameter)
-	  .append("g")
-	    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
-
 	return {
 		link: function(scope, element, attrs) {
+			var margin = 20,
+			    diameter = 960;
+
+			var color = d3.scale.linear()
+			    .domain([-1, 5])
+			    .range(["hsl(152,80%,80%)", "hsl(228,30%,40%)"])
+			    .interpolate(d3.interpolateHcl);
+
+			var pack = d3.layout.pack()
+			    .padding(2)
+			    .size([diameter - margin, diameter - margin])
+			    .value(function(d) { return d.size; })
+
+			var svg = d3.select("body").append("svg")
+			    .attr("width", diameter)
+			    .attr("height", diameter)
+			    .append("g")
+			    .attr("transform", "translate(" + diameter / 2 + "," + diameter / 2 + ")");
 
 			var focus = bubbleService,
 			      nodes = pack.nodes(bubbleService),
