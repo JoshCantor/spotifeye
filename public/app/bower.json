@@ -1,0 +1,25 @@
+{
+  "name": "bower_components",
+  "homepage": "https://github.com/JoshCantor/spotifeye",
+  "authors": [
+    "MauricioAndrades <mod.and.op@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-animate": "^1.5.0",
+    "angular-bootstrap": "^1.1.2"
+  }
+}
