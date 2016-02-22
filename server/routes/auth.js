@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var request = require('request');
 
+
 var knex = require('../db/knex')
 
 var client_id = "1857c7c8664f4600b762dc603227be89";
@@ -31,17 +32,25 @@ router.get('/spotify/callback', function(req,res){
         var refresh_token = bodyJSON.refresh_token;
 
         request.get('https://api.spotify.com/v1/me?access_token='+access_token,function(error,response,body){
-            var userInfoJSON = JSON.parse(body)
-            var user_id = userInfoJSON.id;
+            var userInfoJSON = JSON.parse(body);
 
-            request.get('https://api.spotify.com/v1/users/'+user_id+'/playlists?access_token='+access_token, function(error,response,body){
-                var playlistJSON = JSON.parse(body)
-                knex('songs').insert({json_data:playlistJSON.items[1]}).then(function(){
-                    knex('songs').then(function(data){
-                        res.send(data)
-                    })
-                })
-            })
+            var user_id = userInfoJSON.id;
+            var display_name = userInfoJSON.display_name;
+            var profile_pic = userInfoJSON.images[0].url;
+
+            // knex('users').where({user_id:user_id}).then(function(data){
+            //     if(data.length === 0){
+            //         console.log("first and only time adding this user")
+            //         knex('users').insert({display_name:display_name,
+            //                              user_id:user_id,
+            //                              profile_pic:profile_pic
+            //                             }).then(function(test){
+            //                                 request.get('https://api.spotify.com/v1/users/'+user_id+'/playlists?access_token='+access_token, function(error, response, body){
+            //                                     var playlistJSON = JSON.parse(body);
+            //                                 })
+            //                             })
+            //     }
+            // })
         })
     })
 })
