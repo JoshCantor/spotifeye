@@ -1,10 +1,9 @@
 var express = require("express");
 var router = express.Router();
-var url = require('url');
 var request = require('request');
 
-var passport = require("passport");
-var SpotifyStrategy = require('passport-spotify').Strategy;
+// var passport = require("passport");
+// var SpotifyStrategy = require('passport-spotify').Strategy;
 
 var client_id = "1857c7c8664f4600b762dc603227be89";
 var client_secret = "00d15fc31efb436ea0a012ef7af2a248";
@@ -28,11 +27,18 @@ router.get('/spotify/callback', function(req,res){
             'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
         }
     }, function(error, response, body){
-        var access_token = body.access_token;
+        var bodyJSON = JSON.parse(body);
+        var access_token = bodyJSON.access_token;
+        res.send(access_token)
+
+        // var access_token = body['access_token'];
+        // console.log("access_token = " + access_token)
+        // request.get('https://api.spotify.com/v1/me?access_token='+access_token,function(error, response, body){
+        //     res.send(body)
+        // })
     })
 })
 
 module.exports = {
-	router:router,
-	passport:passport
+	router:router
 }
