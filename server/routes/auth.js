@@ -2,8 +2,7 @@ var express = require("express");
 var router = express.Router();
 var request = require('request');
 
-// var passport = require("passport");
-// var SpotifyStrategy = require('passport-spotify').Strategy;
+var knex = require('../db/knex')
 
 var client_id = "1857c7c8664f4600b762dc603227be89";
 var client_secret = "00d15fc31efb436ea0a012ef7af2a248";
@@ -31,13 +30,19 @@ router.get('/spotify/callback', function(req,res){
         var access_token = bodyJSON.access_token;
         var refresh_token = bodyJSON.refresh_token;
 
-        request.get('https://api.spotify.com/v1/users/tentanium/playlists?access_token='+access_token, function(error, response, body){
-            res.send(JSON.parse(body))
-        })
+        request.get('https://api.spotify.com/v1/me?access_token='+access_token,function(error,response,body){
+            var userInfoJSON = JSON.parse(body)
+            var user_id = userInfoJSON.id;
 
-        // request.get('https://api.spotify.com/v1/me?access_token='+access_token,function(error, response, body){
-            
-        // })
+            request.get('https://api.spotify.com/v1/users/'+user_id+'/playlists?access_token='+access_token, function(error,response,body){
+                var playlistJSON = JSON.parse(body)
+                knex('songs').insert({json_data:playlistJSON.items[1]}).then(function(){
+                    knex('songs').then(function(data){
+                        res.send(data)
+                    })
+                })
+            })
+        })
     })
 })
 
