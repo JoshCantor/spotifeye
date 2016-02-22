@@ -11,7 +11,7 @@ var client_secret = "00d15fc31efb436ea0a012ef7af2a248";
 var redirect_uri = "http://localhost:3000/auth/spotify/callback";
 
 router.get('/spotify', function(req, res){
-    var scope = 'user-read-private user-read-email';
+    var scope = 'user-read-private user-read-email playlist-read-private streaming';
     res.redirect('https://accounts.spotify.com/authorize?client_id='+client_id+'&client_secret='+client_secret+'&redirect_uri='+redirect_uri+'&scope='+scope+'&response_type=code'+'&show_dialog=true')
 })
 
@@ -28,7 +28,7 @@ router.get('/spotify/callback', function(req,res){
             'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
         }
     }, function(error, response, body){
-        res.send(body)
+        var access_token = body.access_token;
     })
 })
 
