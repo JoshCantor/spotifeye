@@ -8,8 +8,11 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
 	<script type="text/javascript" src="/client/app.js"></script>
 </head>
-<body>
-	<h1>Yay! Click button to change views</h1>
+<body ng-controller="Dashboard">
+	<button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
+	<button ng-click="goToBubbles()">Go To Bubbles</button>
+	<button ng-click="goToDashboard()">Go To Dashboard</button>
+	
 	<div ng-view></div>
 </body>
 </html>

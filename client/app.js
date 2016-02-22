@@ -2,14 +2,28 @@ var app = angular.module('spotifeye', ['ngRoute']);
 
 app.config(function($routeProvider) {
 	$routeProvider
-	.when('/', {
+	.when('/user/dashboard/bubbles', {
 		templateUrl: "/client/bubbleTemplate.html",
 		controller: "BubbleController"
 	})
-	.when('/edgeBundle', {
+	.when('/user/dashboard/edgeBundle', {
 		templateUrl: "/client/edgeTemplate.html",
 		controller: "EdgeController"
 	});
+});
+
+app.controller('Dashboard', function($scope, $http, $location) {
+	$scope.goToEdge = function() {
+		$location.path("/user/dashboard/edgeBundle");
+	}
+
+	$scope.goToBubbles = function() {
+		$location.path('/user/dashboard/bubbles');
+	}
+	
+	$scope.goToDashboard = function() {
+		$location.path('/user');
+	}
 });
 
 app.controller('BubbleController', function($scope, $http, $location) {
@@ -20,10 +34,6 @@ app.controller('BubbleController', function($scope, $http, $location) {
 	// 		$scope.albumData = data;
 	// 	});
 	// }
-
-	$scope.goToEdge = function() {
-		$location.path("/edgeBundle");
-	}
 });
 
 app.directive('bubbles', function(bubbleService) {
@@ -104,9 +114,6 @@ app.directive('bubbles', function(bubbleService) {
 });
 
 app.controller('EdgeController', function($scope, $location) {
-	$scope.goToBubbles = function() {
-		$location.path('/');
-	}
 });
 
 app.directive('edge', function(edgeService) {

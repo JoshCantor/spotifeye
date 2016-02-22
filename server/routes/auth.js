@@ -1,8 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var request = require('request');
-
-var knex = require('../db/knex')
+var knex = require('../db/knex');
 
 var client_id = "1857c7c8664f4600b762dc603227be89";
 var client_secret = "00d15fc31efb436ea0a012ef7af2a248";
@@ -39,13 +38,11 @@ router.get('/spotify/callback', function(req,res){
                 knex('songs').insert({json_data:playlistJSON.items[1]}).then(function(){
                     knex('songs').then(function(data){
                         res.send(data)
-                    })
-                })
-            })
-        })
-    })
-})
+                    });
+                });
+            });
+        });
+    });
+});
 
-module.exports = {
-	router:router
-}
+module.exports = router;
