@@ -29,12 +29,14 @@ router.get('/spotify/callback', function(req,res){
     }, function(error, response, body){
         var bodyJSON = JSON.parse(body);
         var access_token = bodyJSON.access_token;
-        res.send(access_token)
+        var refresh_token = bodyJSON.refresh_token;
 
-        // var access_token = body['access_token'];
-        // console.log("access_token = " + access_token)
+        request.get('https://api.spotify.com/v1/users/tentanium/playlists?access_token='+access_token, function(error, response, body){
+            res.send(JSON.parse(body))
+        })
+
         // request.get('https://api.spotify.com/v1/me?access_token='+access_token,function(error, response, body){
-        //     res.send(body)
+            
         // })
     })
 })
