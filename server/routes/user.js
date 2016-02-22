@@ -7,14 +7,11 @@ router.get("/", function(req, res, next) {
     res.sendFile(process.cwd() + '/server/views/index.html');
 });
 
-// app.get('/dashboard', function(req, res, next) {
-//     knex('songs').then(function(data){
-//     	var ids = data.map(function(album) {
-//     		return album.id;
-//     	});
-//     	console.log(ids);
-//     	res.json(ids);
-//     });
-// });
+router.get('/bubble', function(req, res, next) {
+    knex('songs').then(function(data){
+    	console.log(data);
+    	res.json(data);
+    });
+});
 
 module.exports = router;

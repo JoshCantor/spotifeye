@@ -2,11 +2,11 @@ var app = angular.module('spotifeye', ['ngRoute']);
 
 app.config(function($routeProvider) {
 	$routeProvider
-	.when('/user/dashboard/bubbles', {
+	.when('/dashboard/bubbles', {
 		templateUrl: "/client/bubbleTemplate.html",
 		controller: "BubbleController"
 	})
-	.when('/user/dashboard/edgeBundle', {
+	.when('/dashboard/edgeBundle', {
 		templateUrl: "/client/edgeTemplate.html",
 		controller: "EdgeController"
 	});
@@ -14,11 +14,11 @@ app.config(function($routeProvider) {
 
 app.controller('Dashboard', function($scope, $http, $location) {
 	$scope.goToEdge = function() {
-		$location.path("/user/dashboard/edgeBundle");
+		$location.path("/dashboard/edgeBundle");
 	}
 
 	$scope.goToBubbles = function() {
-		$location.path('/user/dashboard/bubbles');
+		$location.path('/dashboard/bubbles');
 	}
 	
 	$scope.goToDashboard = function() {
@@ -27,13 +27,14 @@ app.controller('Dashboard', function($scope, $http, $location) {
 });
 
 app.controller('BubbleController', function($scope, $http, $location) {
-	// $scope.albumData = [];
+	$scope.data = [];
 
-	// $scope.getAlbumData = function() {
-	// 	$http.get('/dashboard').then(function(data){
-	// 		$scope.albumData = data;
-	// 	});
-	// }
+	$scope.getData = function() {
+		$http.get('/user/bubble').then(function(data){
+			$scope.data = data;
+		});
+	}
+	$scope.getData();
 });
 
 app.directive('bubbles', function(bubbleService) {
