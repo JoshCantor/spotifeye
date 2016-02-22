@@ -22,8 +22,6 @@ app.controller('BubbleController', function($scope, $http, $location) {
 	// }
 
 	$scope.goToEdge = function() {
-		//remove svg from view
-		d3.select("svg").remove();
 		$location.path("/edgeBundle");
 	}
 });
@@ -44,7 +42,7 @@ app.directive('bubbles', function(bubbleService) {
 			    .size([diameter - margin, diameter - margin])
 			    .value(function(d) { return d.size; })
 
-			var svg = d3.select("body").append("svg")
+			var svg = d3.select(".bubbles").append("svg")
 			    .attr("width", diameter)
 			    .attr("height", diameter)
 			    .append("g")
@@ -107,7 +105,6 @@ app.directive('bubbles', function(bubbleService) {
 
 app.controller('EdgeController', function($scope, $location) {
 	$scope.goToBubbles = function() {
-		d3.select("svg").remove();
 		$location.path('/');
 	}
 });
@@ -133,7 +130,7 @@ app.directive('edge', function(edgeService) {
 			    .radius(function(d) { return d.y; })
 			    .angle(function(d) { return d.x / 180 * Math.PI; });
 
-			var svg = d3.select("body").append("svg")
+			var svg = d3.select(".edge").append("svg")
 			    .attr("width", diameter)
 			    .attr("height", diameter)
 			  .append("g")
