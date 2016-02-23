@@ -8,10 +8,7 @@ router.get("/", function(req, res, next) {
 });
 
 router.get('/bubble', function(req, res, next) {
-    knex('songs').then(function(data){
-    	console.log(data);
-    	res.json(data);
-    });
+    
 });
 
 module.exports = router;
