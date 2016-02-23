@@ -1,19 +1,95 @@
 <!DOCTYPE html>
-<html ng-app="spotifeye">
+<html lang="en" ng-app="spotifeyeApp" ng-controller="MainController as main">
 <head>
+
 	<meta charset="UTF-8">
 	<title>Spotifeye</title>
+	<!-- d3 -->
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
-	<script type="text/javascript" src="/client/app.js"></script>
+	<!-- mau5 original plain css -->
+	<link rel="stylesheet" type="text/css" href="css/main.css"> 
 </head>
-<body ng-controller="Dashboard">
-	<button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
-	<button ng-click="goToBubbles()">Go To Bubbles</button>
-	<button ng-click="goToChords()">Go To Chords</button>
-	<button ng-click="goToDashboard()">Go To Dashboard</button>
-	
-	<div ng-view></div>
+
+<body>    
+    <div>
+        <div>
+            <!-- SIDE NAVBAR -->
+            <nav class="nav">
+                <div class="burger"> <i class="fa fa-bars"></i>
+                    <div class="burger_patty"></div>
+                </div>
+
+                <!-- MENU -->
+                <ul class="nav_list">
+                    <!-- LANDING PAGE LOGIN BUTTON -->
+                    <li class="nav_item">
+                        <a href="#2" class="nav_link c-yellow scrolly">
+                            <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
+                    </li>
+
+                    <li class="nav_item">
+                        <a href="#3" class="nav_link c-red">
+                            <img src="media/two.png" alt="two_icon" style="height: 40px"></a>
+                    </li>
+
+                    <li class="nav_item">
+                        <a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- LOGIN TO SPOTIFY -->
+            <section class="panel b-yellow" id="2">
+                <article class="panel_wrapper">
+                    <div class="panel_content">
+                        <h1 class="panel_headline">
+                            {{ title }}
+                        </h1>
+                        <div class="panel_block"></div>
+                        <div class="wrap">
+                            <!-- LOGIN BUTTON -->
+                            <a class="btn inset" href="#" id="btn-login">LOGIN</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- PANEL THREE -->
+            <section class="panel b-red" id="3" ng-controller="Dashboard">
+                <article class="panel_wrapper">
+                    <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
+                    <button ng-click="goToBubbles()">Go To Bubbles</button>
+                    <button ng-click="goToChords()">Go To Chords</button>
+                    <button ng-click="goToDashboard()">Go To Dashboard</button>
+                    <div ng-view></div>
+                </article>
+            </section>
+        </div>
+    </div>
+
+    <div><h1>{{ hello }}</h1></div>
+
+    <!-- angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
+
+    <!-- app scripts -->
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/routes.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/maincontroller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/edgecontroller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/dashboardcontroller.js"></script>
+
+    <!-- mau5 temp javascript - needs to be served with angular-->
+    <script type="text/javascript" src="js/mau5/main-animation.js"></script>
+    <!-- <script type="text/javascript" src="js/mau5/reslist.js"></script> -->
+    <!-- <script type="text/javascript" src="js/mau5/textfield.js"></script> -->
+    <script type="text/javascript" src="js/mau5/hash.js"></script>
+    <script type="text/javascript" src="js/mau5/track.js"></script>
 </body>
 </html>
