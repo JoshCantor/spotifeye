@@ -22,6 +22,7 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "dotenv": "^2.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
     "jshint-stylish": "^2.1.0"

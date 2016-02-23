@@ -6,19 +6,19 @@ var morgan = require('morgan');
 // var bodyParser = require('body-parser');
 var knex = require('./db/knex.js');
 var request = require('request');
-require('locus')
+require('locus');
 
 var auth = require('./routes/auth');
 var user = require('./routes/user');
 // mau - landingpage route
-var home = require('./routes/home')
+var home = require('./routes/home');
 
 var app = express();
 // require('dotenv').config();
 
-// app.use('/client', express.static(__dirname + '../client'));
+app.use('/client', express.static(__dirname + '../client'));
 // mau - route to public
-debugger;
+
 app.use(express.static(path.join(__dirname, "../client/public")));
 app.use(bodyParser.urlencoded({
     extended: true
