@@ -1,18 +1,91 @@
 <!DOCTYPE html>
-<html ng-app="spotifeye">
-<head>
-	<meta charset="UTF-8">
-	<title>d3</title>
-	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
-	<script type="text/javascript" src="/client/app.js"></script>
-</head>
-<body ng-controller="Dashboard">
-	<button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
-	<button ng-click="goToBubbles()">Go To Bubbles</button>
-	<button ng-click="goToDashboard()">Go To Dashboard</button>
-	
-	<div ng-view></div>
-</body>
+<html ng-app="spotifeye" ng-controller="MainController">
+	<head>
+		<title>SpotifEYE</title>
+		<meta charset="utf-8">
+		<!-- mau5 original plain css -->
+		<link rel="stylesheet" type="text/css" href="app/css/main.css">
+		<link rel="stylesheet" type="text/css" href="app/css/restlist.css"/>
+
+		<!-- font-awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+		<!-- jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+
+		<!-- underscore -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+
+		<!-- angular -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+		<script type="text/javascript" src="app/app.js"></script>
+
+		<!-- mau5 -->
+		<script type="text/javascript" src="app/js/mau5/main-animation.js" defer></script>
+		<script type="text/javascript" src="app/js/mau5/reslist.js"></script>
+		<script type="text/javascript" src="app/js/mau5/textfield.js"></script>
+		<script type="text/javascript" src="app/js/mau5/hash.js"></script>
+		<script type="text/javascript" src="app/js/mau5/login.js"></script>
+		<script type="text/javascript" src="app/js/mau5/track.js"></script>
+		<script type="text/javascript" src="app/js/mau5/spotify-web-api.js" defer></script>
+	</head>
+
+	<body>
+		<nav class="nav">
+			<div class="burger"> <i class="fa fa-bars"></i>
+				<div class="burger_patty"></div>
+			</div>
+
+			<!-- MENU -->
+			<ul class="nav_list">
+				<!-- LANDING PAGE LOGIN BUTTON -->
+				<li class="nav_item">
+					<a href="#2" class="nav_link c-yellow scrolly">
+						<img src="app/media/one.png" alt="one_icon" style="height: 40px"></a>
+				</li>
+				<li class="nav_item">
+					<a href="#3" class="nav_link c-red">
+						<img src="app/media/two.png" alt="two_icon" style="height: 40px"></a>
+				</li>
+				<li class="nav_item">
+					<a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- LOGIN TO SPOTIFY -->
+		<section class="panel b-yellow" id="2">
+			<article class="panel_wrapper">
+				<div class="panel_content">
+					<h1 class="panel_headline">Step 1: Log Into Spotify</h1>
+					<div class="panel_block"></div>
+					<div class="wrap">
+						<!-- LOGIN BUTTON -->
+						<a class="btn inset" href="#" id="btn-login">LOGIN</a>
+					</div>
+				</div>
+			</article>
+		</section>
+
+		<!-- PANEL THREE -->
+		<section class="panel b-red" id="3">
+			<article class="panel_wrapper"></article>
+		</section>
+
+		<!-- PANEL FOUR -->
+		<!-- RESULTS -->
+		<section class="panel b-green" id="4">
+			<article class="panel_wrapper">
+				<div class="panel_content">
+					<h1 class="panel_headline">RESULTS</h1>
+					<div class="panel_block"></div>
+					<p>Result Boxes</p>
+				</div>
+			</article>
+		</section>
+
+
+	</body>
 </html>

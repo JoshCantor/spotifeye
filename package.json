@@ -19,8 +19,11 @@
     "request": "^2.69.0",
     "passport": "^0.3.2",
     "passport-spotify": "^0.3.0",
-    "pg": "^4.4.6",
-    "request": "^2.69.0",
     "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "jshint-stylish": "^2.1.0"
   }
 }
