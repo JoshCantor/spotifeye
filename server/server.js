@@ -3,11 +3,17 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	morgan = require('morgan'),
 	knex = require('./db/knex.js'),
+
 	request = require('request');
 
 // require('dotenv').config();
 
 require('locus');
+request = require('request'),
+
+
+// require('dotenv').config();
+//test
 
 app.use('/client', express.static(__dirname + '/../client'));
 
@@ -17,8 +23,10 @@ var user = require('./routes/user');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan('tiny'));
 
+
 app.use('/auth', auth);
 app.use('/user', user);
+
 
 app.listen(3000, function() {
 	console.log('listening on 3000...');
