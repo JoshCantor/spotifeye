@@ -1,14 +1,25 @@
-"use strict";
-
 /** DESCRIPTION OF WHAT THIS IS DOING GOES HERE */
+(function() {
+    'use strict';
 
-var app = angular.module("spotifeyeApp", [
-    "ngAnimate",
-    "ngCookies",
-    "ngResource",
-    "ngRoute"
-  ]);
+    angular
+      .module('spotifeyeApp', [
+          'ngAnimate',
+          'ngRoute'
+      ]);
+})();
 
-app.controller("MainController", ["$scope", function($scope) {
-        $scope.hello = "hello world";
-}]);
+
+(function() {
+    'use strict';
+
+    angular
+      .module('spotifeyeApp')
+      .controller('MainController', MainController);
+
+    MainController.$inject = ['$scope'];
+
+    function MainController($scope) {
+        $scope.hello = "badbye";
+    }
+})();

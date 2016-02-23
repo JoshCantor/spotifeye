@@ -16,8 +16,9 @@ var home = require('./routes/home')
 var app = express();
 // require('dotenv').config();
 
-app.use('/client', express.static(__dirname + '../client'));
+// app.use('/client', express.static(__dirname + '../client'));
 // mau - route to public
+debugger;
 app.use(express.static(path.join(__dirname, "../client/public")));
 app.use(bodyParser.urlencoded({
 	extended: true

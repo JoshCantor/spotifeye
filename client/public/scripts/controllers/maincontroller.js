@@ -1,10 +1,18 @@
-'use strict';
 /**
  * @name MainController
  * @description
  * Controller of the spotifeyeApp
  */
-var app = angular.module('spotifeyeApp');
-app.controller("MainController", ["$scope", function($scope) {
-        $scope.hello = "hello world";
-}]);
+(function() {
+    'use strict';
+
+    angular
+      .module('spotifeyeApp')
+      .controller('MainController', MainController);
+
+    MainController.$inject = ['$scope'];
+
+    function MainController($scope) {
+        $scope.hello = "hello";
+    }
+})();
