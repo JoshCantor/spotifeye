@@ -57,7 +57,7 @@ app.directive('bubbles', function(bubbleService) {
 	return {
 		link: function(scope, element, attrs) {
 			var margin = 20,
-			    diameter = 960;
+			    diameter = 700;
 
 			var color = d3.scale.linear()
 			    .domain([-1, 5])
@@ -266,8 +266,8 @@ app.directive('chords', function() {
 			  [ 1013,   990,  940, 6907]
 			];
 
-			var width = 720,
-			    height = 720,
+			var width = 540,
+			    height = 540,
 			    outerRadius = Math.min(width, height) / 2 - 10,
 			    innerRadius = outerRadius - 24;
 
