@@ -6,12 +6,15 @@ exports.up = function(knex, Promise) {
   		table.string('profile_pic');
   	}),
   	knex.schema.createTable("tracks", function(table){
-		table.string("track_id");
-		table.string('track_name');
-		table.integer('track_popularity');
-		table.string('album_art');
-		table.string('preview_url');
-		table.integer('echonest_category');
+  		table.string("track_id");
+  		table.string('track_name');
+  		table.integer('track_popularity');
+  		table.string('album_art');
+  		table.string('preview_url');
+  		table.boolean('explicit');
+      table.string('genre');
+      table.string('artists');
+      table.integer('duration_ms');
   	}),
   	knex.schema.createTable("savedtracks", function(table){
   		// table.primary();

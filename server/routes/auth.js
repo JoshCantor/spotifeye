@@ -68,14 +68,24 @@ function addTracksToDB(body,user_id){
         var track_popularity = responseJSON.items[i].track.popularity;
         var track_art = responseJSON.items[i].track.album.images[0].url;
         var preview_url = responseJSON.items[i].track.preview_url;
-        function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
+        var explicit = responseJSON.items[i].track.explicit;
+        var duration_ms = responseJSON.items[i].track.duration_ms;
+        var album_id = responseJSON.items[i].track.album.id;
+        console.log('album id = ' + album_id)
+        function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url, explicit, duration_ms, album_id){
+            request.get('https://api.spotify.com/v1/albums/'+album_id, function(error, response,body){
+                var JSONbody = JSON.parse(body);
+                console.log(JSONbody.genres)
+            })
             knex('tracks').where({track_id:track_id}).then(function(data){
                 if(data.length === 0){
                     knex('tracks').insert({track_id:track_id,
                                            track_name:track_name,
                                            track_popularity:track_popularity,
                                            album_art:track_art,
-                                           preview_url:preview_url}).then(function(){})
+                                           preview_url:preview_url,
+                                           explicit:explicit,
+                                           duration_ms:duration_ms}).then(function(){})
                 }
             })
             knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
@@ -88,7 +98,7 @@ function addTracksToDB(body,user_id){
             
         }
         knex('tracks').where({track_id:track_id})
-        .then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url))
+        .then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url, explicit, duration_ms,album_id))
     }
 }
 
