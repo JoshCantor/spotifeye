@@ -18,7 +18,7 @@ app.use(morgan('tiny'));
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/auth',auth.router)
+app.use('/auth',auth);
 
 // app.get("/", function(req, res, next) {
 // 	request.get("https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy", function(error, response, body) {

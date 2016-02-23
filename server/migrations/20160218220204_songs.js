@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
   		table.string('profile_pic');
   	}),
   	knex.schema.createTable("tracks", function(table){
+      table.increments();
 		table.string("track_id");
 		table.string('track_name');
 		table.integer('track_popularity');
