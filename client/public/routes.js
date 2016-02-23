@@ -9,11 +9,11 @@ angular.module('spotifeyeApp')
             controller: 'MainController'
         })
         .when('/dashboard/bubbles', {
-            templateUrl: '/client/public/app/views/bubbleTemplate.html',
+            templateUrl: 'views/bubbleTemplate.html',
             controller: 'BubbleController'
         })
         .when('/dashboard/edgeBundle', {
-            templateUrl: '/client/public/app/views/edgeTemplate.html',
+            templateUrl: 'views/edgeTemplate.html',
             controller: 'EdgeController'
         })
         .otherwise({

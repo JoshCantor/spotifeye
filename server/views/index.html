@@ -14,68 +14,72 @@
 <body>
 
     <!-- NOTE MAIN VIEW INJECTION: WILL BE SERVED AS VIEW -->
+    <div ng-view></div>
+
     <div>
-        <nav class="nav">
-            <div class="burger"> <i class="fa fa-bars"></i>
-                <div class="burger_patty"></div>
-            </div>
+        <div>
+            <!-- SIDE NAVBAR -->
+            <nav class="nav">
+                <div class="burger"> <i class="fa fa-bars"></i>
+                    <div class="burger_patty"></div>
+                </div>
 
-            <!-- MENU -->
-            <ul class="nav_list">
-                <!-- LANDING PAGE LOGIN BUTTON -->
-                <li class="nav_item">
-                    <a href="#2" class="nav_link c-yellow scrolly">
-                        <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
-                </li>
+                <!-- MENU -->
+                <ul class="nav_list">
+                    <!-- LANDING PAGE LOGIN BUTTON -->
+                    <li class="nav_item">
+                        <a href="#2" class="nav_link c-yellow scrolly">
+                            <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
+                    </li>
 
-                <li class="nav_item">
-                    <a href="#3" class="nav_link c-red">
-                        <img src="media/two.png" alt="two_icon" style="height: 40px"></a>
-                </li>
+                    <li class="nav_item">
+                        <a href="#3" class="nav_link c-red">
+                            <img src="media/two.png" alt="two_icon" style="height: 40px"></a>
+                    </li>
 
-                <li class="nav_item">
-                    <a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+                    <li class="nav_item">
+                        <a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
-        <!-- LOGIN TO SPOTIFY -->
-        <section class="panel b-yellow" id="2">
-            <article class="panel_wrapper">
-                <div class="panel_content">
-                    <h1 class="panel_headline">
-                        Step 1: Log Into Spotify
-                    </h1>
-                    <div class="panel_block"></div>
-                    <div class="wrap">
-                        <!-- LOGIN BUTTON -->
-                        <a class="btn inset" href="#" id="btn-login">LOGIN</a>
+            <!-- LOGIN TO SPOTIFY -->
+            <section class="panel b-yellow" id="2">
+                <article class="panel_wrapper">
+                    <div class="panel_content">
+                        <h1 class="panel_headline">
+                            {{ title }}
+                        </h1>
+                        <div class="panel_block"></div>
+                        <div class="wrap">
+                            <!-- LOGIN BUTTON -->
+                            <a class="btn inset" href="#" id="btn-login">LOGIN</a>
+                        </div>
                     </div>
-                </div>
-            </article>
-        </section>
+                </article>
+            </section>
 
-        <!-- PANEL THREE -->
-        <section class="panel b-red" id="3">
-            <article class="panel_wrapper"></article>
-        </section>
+            <!-- PANEL THREE -->
+            <section class="panel b-red" id="3">
+                <article class="panel_wrapper"></article>
+            </section>
 
-        <!-- PANEL FOUR -->
-        <!-- RESULTS -->
-        <section class="panel b-green" id="4">
-            <article class="panel_wrapper">
-                <div class="panel_content">
-                    <h1 class="panel_headline">RESULTS</h1>
-                    <div class="panel_block"></div>
-                    <p>
-                        Result Boxes
-                    </p>
-                </div>
-            </article>
-        </section>
+            <!-- PANEL FOUR -->
+            <!-- RESULTS -->
+            <section class="panel b-green" id="4">
+                <article class="panel_wrapper">
+                    <div class="panel_content">
+                        <h1 class="panel_headline">RESULTS</h1>
+                        <div class="panel_block"></div>
+                        <p>
+                            Result Boxes
+                        </p>
+                    </div>
+                </article>
+            </section>
+        </div>
     </div>
-
     <div><h1>{{ hello }}</h1></div>
 
     <!-- angular -->
@@ -93,8 +97,8 @@
 
     <!-- mau5 temp javascript - needs to be served with angular-->
     <script type="text/javascript" src="js/mau5/main-animation.js"></script>
-    <script type="text/javascript" src="js/mau5/reslist.js"></script>
-    <script type="text/javascript" src="js/mau5/textfield.js"></script>
+    <!-- <script type="text/javascript" src="js/mau5/reslist.js"></script> -->
+    <!-- <script type="text/javascript" src="js/mau5/textfield.js"></script> -->
     <script type="text/javascript" src="js/mau5/hash.js"></script>
     <script type="text/javascript" src="js/mau5/track.js"></script>
 
