@@ -43,7 +43,7 @@ router.get('/spotify/callback', function(req,res){
                     knex('users').insert({display_name:display_name,
                                          user_id:user_id,
                                          profile_pic:profile_pic
-                                        }).then(function(test){
+                                        }).then(function(test){ // INSERTS SONGS IF FIRST TIME LOGINING IN
                                             request.get('https://api.spotify.com/v1/me/tracks?access_token='+access_token, function(error, response,body){
                                                 var responseJSON = JSON.parse(body);
                                                 for(var i = 0; i < responseJSON.items.length; i++){
@@ -53,11 +53,15 @@ router.get('/spotify/callback', function(req,res){
                                                     var track_art = responseJSON.items[i].track.album.images[0].url;
                                                     var preview_url = responseJSON.items[i].track.preview_url;
                                                     function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
-                                                        knex('tracks').insert({track_id:track_id,
-                                                                               track_name:track_name,
-                                                                               track_popularity:track_popularity,
-                                                                               album_art:track_art,
-                                                                               preview_url:preview_url}).then(function(){})
+                                                        knex('tracks').where({track_id:track_id}).then(function(data){
+                                                            if(data.length === 0){
+                                                                knex('tracks').insert({track_id:track_id,
+                                                                                       track_name:track_name,
+                                                                                       track_popularity:track_popularity,
+                                                                                       album_art:track_art,
+                                                                                       preview_url:preview_url}).then(function(){})
+                                                            }
+                                                        })
                                                     }
                                                     knex('tracks').where({track_id:track_id}).then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url))
                                                 }
@@ -74,11 +78,15 @@ router.get('/spotify/callback', function(req,res){
                             var track_art = responseJSON.items[i].track.album.images[0].url;
                             var preview_url = responseJSON.items[i].track.preview_url;
                             function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
-                                knex('tracks').insert({track_id:track_id,
-                                                       track_name:track_name,
-                                                       track_popularity:track_popularity,
-                                                       album_art:track_art,
-                                                       preview_url:preview_url}).then(function(){})
+                                knex('tracks').where({track_id:track_id}).then(function(data){
+                                    if(data.length === 0){
+                                        knex('tracks').insert({track_id:track_id,
+                                                               track_name:track_name,
+                                                               track_popularity:track_popularity,
+                                                               album_art:track_art,
+                                                               preview_url:preview_url}).then(function(){})
+                                    }
+                                })
                             }
                             knex('tracks').where({track_id:track_id}).then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url))
                         }
