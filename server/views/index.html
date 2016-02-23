@@ -58,20 +58,17 @@
             <!-- PANEL THREE -->
             <section class="panel b-red" id="3" >
                 <article class="panel_wrapper">
+                <div ng-controller="Dashboard">
+                    <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
+                    <button ng-click="goToBubbles()">Go To Bubbles</button>
+                    <button ng-click="goToChords()">Go To Chords</button>
+                    <button ng-click="goToDashboard()">Go To Dashboard</button>
+                    <div ng-view></div>
+                </div>
                 </article>
             </section>
         </div>
     </div>
-    <div><h1>{{ hello }}</h1></div>
-    <div ng-controller="Dashboard">
-        <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
-        <button ng-click="goToBubbles()">Go To Bubbles</button>
-        <button ng-click="goToChords()">Go To Chords</button>
-        <button ng-click="goToDashboard()">Go To Dashboard</button>
-        <div ng-view></div>
-    </div>
-
-    
 
     <!-- angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
