@@ -45,7 +45,9 @@ router.get('/spotify/callback', function(req, res) {
                         //     addTracksToDB(body,user_id)
                         // })
                         var items = [];
-                        getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=',access_token,items,user_id, generateInsertCB);
+                        console.log('first', user_id);
+                        getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
+                        res.redirect('/');
                     });
                 }
                 else {
@@ -53,62 +55,68 @@ router.get('/spotify/callback', function(req, res) {
                     //     addTracksToDB(body,user_id);
                     // })
                     var items = [];
-                    getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=',access_token,items,user_id, generateInsertCB);
+                    console.log('second', user_id);
+                    getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
+                    res.redirect('/');
                 }
             });
         });
     });
 });
 
-function getNext(next,access_token,items,user_id, generateInsertCB) {
+function getNext(next, access_token, items, user_id) {
     request.get(next + access_token, function(error, response, body) {
         var parsed = JSON.parse(body);
         items = items.concat(parsed.items);
         if (parsed.next) {
-            getNext(parsed.next + '&access_token=',access_token,items, generateInsertCB);
+            console.log('really inside', user_id);
+            getNext(parsed.next + '&access_token=', access_token, items, user_id);
         } else {
-            console.log(items.length);
-            addTracksToDB(items,user_id, generateInsertCB);
+            addTracksToDB(items, user_id);
         }
     });
 }
 
-function addTracksToDB(items,user_id, generateInsertCB){
+function addTracksToDB(items, user_id) {
     for(var i = 0; i < items.length; i++){
         var track_id = items[i].track.id;
         var track_name = items[i].track.name;
         var track_popularity = items[i].track.popularity;
         var track_art = items[i].track.album.images[0].url;
         var preview_url = items[i].track.preview_url;
-        var explicit = responseJSON.items[i].track.explicit;
-        var duration_ms = responseJSON.items[i].track.duration_ms;
-        
+        var explicit = items[i].track.explicit;
+        var duration_ms = items[i].track.duration_ms;
+
         knex('tracks').where({track_id:track_id})
-        .then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url, explicit, duration_ms,album_id))
+        .then(generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id));
     }
 }
 
-function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
-            knex('tracks').where({track_id:track_id}).then(function(data){
-                if(data.length === 0){
-                    knex('tracks').insert({track_id:track_id,
-                                           track_name:track_name,
-                                           track_popularity:track_popularity,
-                                           album_art:track_art,
-                                           preview_url:preview_url,
-                                           explicit:explicit,
-                                           duration_ms:duration_ms}).then(function(){})
-                }
+function generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id){
+    knex('tracks').where({track_id:track_id}).then(function(data){
+        if(data.length === 0){
+            knex('tracks')
+            .insert({
+                track_id:track_id,
+                track_name:track_name,
+                track_popularity:track_popularity,
+                album_art:track_art,
+                preview_url:preview_url,
+                explicit:explicit,
+                duration_ms:duration_ms
             })
-            knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
-                if(rows.length === 0){
-                    knex('savedtracks').insert({user_id:user_id,track_id:track_id}).then(function(){
-                        // console.log("does it log?")
-                    });
-                }
-            })
-            
+            .then(function(){})
         }
+    });
+    knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
+        if(rows.length === 0){
+            knex('savedtracks').insert({user_id:user_id,track_id:track_id}).then(function(){
+                // console.log("does it log?")
+            });
+        }
+    });
+    
+}
 
 module.exports = router;
 
