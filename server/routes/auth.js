@@ -86,7 +86,9 @@ function addTracksToDB(items,user_id){
                                            track_name:track_name,
                                            track_popularity:track_popularity,
                                            album_art:track_art,
-                                           preview_url:preview_url}).then(function(){})
+                                           preview_url:preview_url,
+                                           explicit:explicit,
+                                           duration_ms:duration_ms}).then(function(){})
                 }
             })
             knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
@@ -99,7 +101,7 @@ function addTracksToDB(items,user_id){
             
         }
         knex('tracks').where({track_id:track_id})
-        .then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url))
+        .then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url, explicit, duration_ms,album_id))
     }
 }
 
