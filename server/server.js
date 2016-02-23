@@ -16,18 +16,18 @@ var home = require('./routes/home');
 var app = express();
 // require('dotenv').config();
 
-app.use('/client', express.static(__dirname + '../client'));
+// app.use('/client', express.static(__dirname + '../client'));
 // mau - route to public
 
-app.use(express.static(path.join(__dirname, "../client/public")));
+app.use('/', express.static(path.join(__dirname, "../client/public")));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(morgan('tiny'));
 
-app.use('/', home);
 app.use('/auth', auth);
 app.use('/user', user);
+app.use('/', home);
 
 app.listen(3000, function() {
     console.log('listening on 3000...');

@@ -3,16 +3,15 @@
  * @description
  * Controller of the spotifeyeApp
  */
-(function() {
-    'use strict';
+ (function() {
+     'use strict';
+     angular
+         .module('spotifeyeApp')
+         .controller('MainController', MainController);
+     MainController.$inject = ['$scope'];
+     function MainController($scope) {
+         $scope.hello = "badbye";
+         $scope.title = "a;lkdjf;adsfjk"
 
-    angular
-      .module('spotifeyeApp')
-      .controller('MainController', MainController);
-
-    MainController.$inject = ['$scope'];
-
-    function MainController($scope) {
-        $scope.hello = "hello";
-    }
-})();
+     }
+ })();

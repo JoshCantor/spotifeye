@@ -12,7 +12,7 @@
 <body>
 
     <!-- NOTE MAIN VIEW INJECTION: WILL BE SERVED AS VIEW -->
-    <div ng-view></div>
+    <div ng-view ng-controller="EdgeController"></div>
 
     <div>
         <div>
@@ -81,11 +81,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular-route.js"></script>
 
     <!-- app scripts -->
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" scr="routes.js"></script>
-    <script type="text/javascript" scr="scripts/controllers/maincontroller.js"></script>
-    <script type="text/javascript" scr="scripts/controllers/edgecontroller.js"></script>
-    <script type="text/javascript" scr="scripts/controllers/dashboard.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+    <script type="text/javascript" src="/routes.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/maincontroller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/edgecontroller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/dashboard.js"></script>
 
     <!-- mau5 temp javascript - needs to be served with angular-->
     <script type="text/javascript" src="js/mau5/main-animation.js"></script>
