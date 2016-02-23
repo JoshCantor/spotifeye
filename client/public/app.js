@@ -3,19 +3,18 @@
     'use strict';
 
     angular
-      .module('spotifeyeApp', [
-          'ngAnimate',
-          'ngRoute'
-      ]);
+        .module('spotifeyeApp', [
+            'ngAnimate',
+            'ngRoute'
+        ]);
 })();
-
 
 (function() {
     'use strict';
 
     angular
-      .module('spotifeyeApp')
-      .controller('MainController', MainController);
+        .module('spotifeyeApp')
+        .controller('MainController', MainController);
 
     MainController.$inject = ['$scope'];
 
