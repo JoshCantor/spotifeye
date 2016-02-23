@@ -44,12 +44,14 @@ router.get('/spotify/callback', function(req, res) {
                     .then(function(){ // INSERTS SONGS IF FIRST TIME LOGINING IN
                         request.get('https://api.spotify.com/v1/me/tracks?access_token=' + access_token, function(error, response,body){
                             addTracksToDB(body, _generateInsertCB)
+                            res.redirect('/');
                         })
                     })
                 }
                 else{
                     request.get('https://api.spotify.com/v1/me/tracks?access_token=' + access_token, function(error, response,body){
                         addTracksToDB(body, _generateInsertCB);
+                        res.redirect('/');
                     });
                 }
             });
