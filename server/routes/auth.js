@@ -45,7 +45,6 @@ router.get('/spotify/callback', function(req, res) {
                         //     addTracksToDB(body,user_id)
                         // })
                         var items = [];
-                        console.log('first', user_id);
                         getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
                         res.redirect('/');
                     });
@@ -55,7 +54,6 @@ router.get('/spotify/callback', function(req, res) {
                     //     addTracksToDB(body,user_id);
                     // })
                     var items = [];
-                    console.log('second', user_id);
                     getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
                     res.redirect('/');
                 }
@@ -69,7 +67,6 @@ function getNext(next, access_token, items, user_id) {
         var parsed = JSON.parse(body);
         items = items.concat(parsed.items);
         if (parsed.next) {
-            console.log('really inside', user_id);
             getNext(parsed.next + '&access_token=', access_token, items, user_id);
         } else {
             addTracksToDB(items, user_id);
