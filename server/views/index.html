@@ -8,6 +8,11 @@
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<!-- mau5 original plain css -->
 	<link rel="stylesheet" type="text/css" href="css/main.css"> 
+    <style type="text/css">
+        .ng-view-hider.ng-leave {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>    
@@ -63,8 +68,8 @@
                     <button ng-click="goToBubbles()">Go To Bubbles</button>
                     <button ng-click="goToChords()">Go To Chords</button>
                     <button ng-click="goToDashboard()">Go To Dashboard</button>
-                    <div ng-view></div>
                 </div>
+                <div class='ng-view-hider' ng-view></div>
                 </article>
             </section>
         </div>
