@@ -8,7 +8,7 @@ angular.module('spotifeyeApp')
     return {
         link: function(scope, element, attrs) {
             var margin = 20,
-                diameter = 960;
+                diameter = 700;
 
             var color = d3.scale.linear()
                 .domain([-1, 5])

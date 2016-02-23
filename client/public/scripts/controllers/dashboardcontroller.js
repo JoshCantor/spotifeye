@@ -10,6 +10,10 @@ angular.module('spotifeyeApp')
 			$location.path('/dashboard/bubbles');
 		};
 
+		$scope.goToChords = function() {
+			$location.path('/dashboard/chords');
+		};
+
 		$scope.goToDashboard = function() {
 			$location.path('/user');
 		};
