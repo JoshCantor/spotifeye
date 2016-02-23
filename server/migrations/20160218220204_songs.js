@@ -12,8 +12,6 @@ exports.up = function(knex, Promise) {
   		table.string('album_art');
   		table.string('preview_url');
   		table.boolean('explicit');
-      table.string('genre');
-      table.string('artists');
       table.integer('duration_ms');
   	}),
   	knex.schema.createTable("savedtracks", function(table){

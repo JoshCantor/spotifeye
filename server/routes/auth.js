@@ -79,6 +79,8 @@ function addTracksToDB(items,user_id){
         var track_popularity = items[i].track.popularity;
         var track_art = items[i].track.album.images[0].url;
         var preview_url = items[i].track.preview_url;
+        var explicit = responseJSON.items[i].track.explicit;
+        var duration_ms = responseJSON.items[i].track.duration_ms;
         function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
             knex('tracks').where({track_id:track_id}).then(function(data){
                 if(data.length === 0){
