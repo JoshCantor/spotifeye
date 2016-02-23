@@ -3,10 +3,8 @@
 <head>
     <title>Spotifeye</title>
     <meta charset="utf-8">
-
     <!-- mau5 original plain css -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
     <!-- d3 -->
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </head>
@@ -61,25 +59,17 @@
             </section>
 
             <!-- PANEL THREE -->
-            <section class="panel b-red" id="3">
-                <article class="panel_wrapper"></article>
-            </section>
-
-            <!-- PANEL FOUR -->
-            <!-- RESULTS -->
-            <section class="panel b-green" id="4">
+            <section class="panel b-red" id="3" ng-controller="Dashboard">
                 <article class="panel_wrapper">
-                    <div class="panel_content">
-                        <h1 class="panel_headline">RESULTS</h1>
-                        <div class="panel_block"></div>
-                        <p>
-                            Result Boxes
-                        </p>
-                    </div>
+                    <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
+                    <button ng-click="goToBubbles()">Go To Bubbles</button>
+                    <button ng-click="goToDashboard()">Go To Dashboard</button>
+
                 </article>
             </section>
         </div>
     </div>
+
     <div><h1>{{ hello }}</h1></div>
 
     <!-- angular -->
@@ -92,8 +82,10 @@
 
     <!-- app scripts -->
     <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" scr="scripts/controllers/maincontroller.js"></script>
     <script type="text/javascript" scr="routes.js"></script>
+    <script type="text/javascript" scr="scripts/controllers/maincontroller.js"></script>
+    <script type="text/javascript" scr="scripts/controllers/edgecontroller.js"></script>
+    <script type="text/javascript" scr="scripts/controllers/dashboard.js"></script>
 
     <!-- mau5 temp javascript - needs to be served with angular-->
     <script type="text/javascript" src="js/mau5/main-animation.js"></script>
@@ -101,6 +93,5 @@
     <!-- <script type="text/javascript" src="js/mau5/textfield.js"></script> -->
     <script type="text/javascript" src="js/mau5/hash.js"></script>
     <script type="text/javascript" src="js/mau5/track.js"></script>
-
 </body>
 </html>

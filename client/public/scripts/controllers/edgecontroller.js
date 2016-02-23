@@ -1,5 +1,13 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('spotifeyeApp')
+    angular
+      .module('spotifeyeApp')
+      .controller('EdgeController', EdgeController);
 
-.controller('EdgeController', function($scope, $location) {});
+    EdgeController.$inject = ['$location', '$scope'];
+
+    function EdgeController($location, $scope) {
+        $scope.edge = "test"
+    }
+})();

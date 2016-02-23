@@ -4,10 +4,10 @@ angular.module('spotifeyeApp')
 
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider
-        .when('/', {
-            templateUrl: 'views/main.html'
-            controller: 'MainController'
-        })
+        // .when('/', {
+        //     templateUrl: 'views/main.html'
+        //     controller: 'MainController'
+        // })
         .when('/dashboard/bubbles', {
             templateUrl: 'views/bubbleTemplate.html',
             controller: 'BubbleController'
