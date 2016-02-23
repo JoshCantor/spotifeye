@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('spotifeye')
+angular.module('spotifeyeApp')
 
-.config(function($routeProvider) {
+.config(['$routeProvider', function($routeProvider) {
     $routeProvider
     .when('/', {
-        templateUrl: 'views/main.html'
+        // templateUrl: 'views/main.html'
         controller: 'MainController'
     })
     .when('/dashboard/bubbles', {
@@ -15,6 +15,6 @@ angular.module('spotifeye')
     .when('/dashboard/edgeBundle', {
         templateUrl: '/client/public/app/views/edgeTemplate.html',
         controller: 'EdgeController'
-    });
-    ;.otherwise({redirectTo: '/'});
-});
+    })
+    .otherwise({redirectTo: '/'});
+}]);

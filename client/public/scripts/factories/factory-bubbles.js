@@ -2,7 +2,7 @@
 
 /** DESCRIPTION OF WHAT THIS IS DOING GOES HERE */
 
-angular.module('spotifeye')
+angular.module('spotifeyeApp')
 
 .factory('bubbleService', function() {
     var data = {

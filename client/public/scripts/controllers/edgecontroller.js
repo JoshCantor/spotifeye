@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('spotifeye')
+angular.module('spotifeyeApp')
 
 .controller('EdgeController', function($scope, $location) {});

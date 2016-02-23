@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spotifeye')
+angular.module('spotifeyeApp')
 	.controller('Dashboard', function($scope, $http, $location) {
 		$scope.goToEdge = function() {
 			$location.path('/dashboard/edgeBundle');
