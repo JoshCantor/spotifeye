@@ -4,5 +4,4 @@
 
 var app = angular.module('spotifeye', [
     'ngRoute',
-
 ]);
