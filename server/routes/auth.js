@@ -1,16 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+require('dotenv').load();
+
 var knex = require('../db/knex');
 
-var client_id = '1857c7c8664f4600b762dc603227be89';
-var client_secret = '00d15fc31efb436ea0a012ef7af2a248';
-var redirect_uri = 'http://localhost:3000/auth/spotify/callback';
+var redirect_uri = "http://localhost:3000/auth/spotify/callback";
 
-router.get('/spotify', function(req, res) {
-    'use strict';
+router.get('/spotify', function(req, res){
     var scope = 'user-read-private user-read-email playlist-read-private streaming user-library-read';
-    res.redirect('https://accounts.spotify.com/authorize?client_id=' + client_id + '&client_secret=' + client_secret + '&redirect_uri=' + redirect_uri + '&scope=' + scope + '&response_type=code' + '&show_dialog=true');
+    res.redirect('https://accounts.spotify.com/authorize?client_id='+process.env.client_id+'&client_secret='+process.env.client_secret+'&redirect_uri='+redirect_uri+'&scope='+scope+'&response_type=code'+'&show_dialog=true')
 });
 
 router.get('/spotify/callback', function(req, res) {
@@ -23,7 +22,7 @@ router.get('/spotify/callback', function(req, res) {
             grant_type: 'authorization_code'
         },
         headers: {
-            'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+            'Authorization': 'Basic ' + (new Buffer(process.env.client_id + ':' + process.env.client_secret).toString('base64'))
         }
     }, function(error, response, body) {
         var bodyJSON = JSON.parse(body);
@@ -42,50 +41,73 @@ router.get('/spotify/callback', function(req, res) {
                 if(data.length === 0){
                     knex('users').insert({ display_name: display_name, user_id: user_id, profile_pic:profile_pic })
                     .then(function(){ // INSERTS SONGS IF FIRST TIME LOGINING IN
-                        request.get('https://api.spotify.com/v1/me/tracks?access_token=' + access_token, function(error, response,body){
-                            addTracksToDB(body, _generateInsertCB)
-                            res.redirect('/');
-                        })
-                    })
-                }
-                else{
-                    request.get('https://api.spotify.com/v1/me/tracks?access_token=' + access_token, function(error, response,body){
-                        addTracksToDB(body, _generateInsertCB);
-                        res.redirect('/');
+                        // request.get('https://api.spotify.com/v1/me/tracks?limit=50&access_token='+access_token, function(error, response,body){
+                        //     addTracksToDB(body,user_id)
+                        // })
+                        var items = [];
+                        getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=',access_token,items,user_id, generateInsertCB);
                     });
+                }
+                else {
+                    // request.get('https://api.spotify.com/v1/me/tracks?limit=50&access_token='+access_token, function(error, response,body){
+                    //     addTracksToDB(body,user_id);
+                    // })
+                    var items = [];
+                    getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=',access_token,items,user_id, generateInsertCB);
                 }
             });
         });
     });
 });
 
-function addTracksToDB(body, generateInsertCB){
-    var responseJSON = JSON.parse(body);
-    for(var i = 0; i < responseJSON.items.length; i++){
-        var track_id = responseJSON.items[i].track.id;
-        var track_name = responseJSON.items[i].track.name;
-        var track_popularity = responseJSON.items[i].track.popularity;
-        var track_art = responseJSON.items[i].track.album.images[0].url;
-        var preview_url = responseJSON.items[i].track.preview_url;
-        knex('tracks').where({ track_id: track_id }).then(generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url))
+function getNext(next,access_token,items,user_id, generateInsertCB) {
+    request.get(next + access_token, function(error, response, body) {
+        var parsed = JSON.parse(body);
+        items = items.concat(parsed.items);
+        if (parsed.next) {
+            getNext(parsed.next + '&access_token=',access_token,items, generateInsertCB);
+        } else {
+            console.log(items.length);
+            addTracksToDB(items,user_id, generateInsertCB);
+        }
+    });
+}
+
+function addTracksToDB(items,user_id, generateInsertCB){
+    for(var i = 0; i < items.length; i++){
+        var track_id = items[i].track.id;
+        var track_name = items[i].track.name;
+        var track_popularity = items[i].track.popularity;
+        var track_art = items[i].track.album.images[0].url;
+        var preview_url = items[i].track.preview_url;
+        var explicit = responseJSON.items[i].track.explicit;
+        var duration_ms = responseJSON.items[i].track.duration_ms;
+        
+        knex('tracks').where({track_id:track_id})
+        .then(generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url, explicit, duration_ms,album_id))
     }
 }
 
-//private method being called only inside addTracksToDB
-function _generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
-            knex('tracks').where({ track_id: track_id })
-            .then(function(data){
+function generateInsertCB(track_id,track_name,track_popularity,track_art, preview_url){
+            knex('tracks').where({track_id:track_id}).then(function(data){
                 if(data.length === 0){
-                    knex('tracks').insert({ 
-                        track_id: track_id,
-                        track_name:track_name,
-                        track_popularity:track_popularity,
-                        album_art:track_art,
-                        preview_url:preview_url
-                    })
-                    .then(function(){});
+                    knex('tracks').insert({track_id:track_id,
+                                           track_name:track_name,
+                                           track_popularity:track_popularity,
+                                           album_art:track_art,
+                                           preview_url:preview_url,
+                                           explicit:explicit,
+                                           duration_ms:duration_ms}).then(function(){})
                 }
             })
+            knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
+                if(rows.length === 0){
+                    knex('savedtracks').insert({user_id:user_id,track_id:track_id}).then(function(){
+                        // console.log("does it log?")
+                    });
+                }
+            })
+            
         }
 
 module.exports = router;

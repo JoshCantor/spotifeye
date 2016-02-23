@@ -25,11 +25,34 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan('tiny'));
 
+<<<<<<< HEAD
 
 app.use('/auth', auth);
 app.use('/user', user);
 app.use('/', home);
 
+=======
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/auth',auth);
+
+// app.get("/", function(req, res, next) {
+// 	request.get("https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy", function(error, response, body) {
+//         if (error) {
+//             res.status(500).send("You got an error - " + error);
+//         } else if (!error && response.statCode >= 300) {
+//             res.status(500).send("Something went wrong! Status: " + response.statusCode);
+//         }
+//         if (!error && response.statusCode === 200) {
+//             var data = JSON.parse(body);
+//             knex('songs').insert({json_data: data}).returning('json_data')
+//             .then(function(json) {
+//             	console.log('json', json);
+//             });
+//         }
+//     });
+// });
+>>>>>>> origin/page
 
 app.listen(3000, function() {
     console.log('listening on 3000...');
