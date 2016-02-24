@@ -1,7 +1,8 @@
 var fs = require('fs');
 
-var parsed = {}
-	;
+var parsed = {
+
+};
 
 fs.readdir('./jsondata', function(err, files) {
 	if (err) throw err;
