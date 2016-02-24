@@ -10,9 +10,13 @@ The third asterisk is for specifying the day of the month for the run (1-31)
 The fourth asterisk is for specifying the month of the run (1-12)
 The fifth asterisk is for specifying the day of the week (where Sunday is equal to 0, up to Saturday is equal to 6)
 
+`env EDITOR=nano crontab -e`
+
 2 * * * * /usr/local/bin/node /Users/Op/Documents/gSchool/proj/angular-spotifeye-josh/spotifeye/echonest/echonest.js
 
+### possible fix if your macs env is not exporting NODE_PATH ###
 
+`*/1 * * * * NODE_PATH=/usr/local/lib/node_modules PATH=/opt/local/bin:ABC:XYZ /Users/Op/Documents/gSchool/proj/angular-spotifeye-josh/spotifeye/echonest/echonest.js`
 
 # setup instructions #
 
