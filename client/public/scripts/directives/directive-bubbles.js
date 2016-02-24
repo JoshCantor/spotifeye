@@ -12,6 +12,7 @@ angular.module('spotifeyeApp')
         link: function(scope, element, attrs) {
             var bubbleService = scope.bubbleService;
             console.log(bubbleService)
+            console.log('scope', scope)
             var margin = 20,
                 diameter = 700;
 
