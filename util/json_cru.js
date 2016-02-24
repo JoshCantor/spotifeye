@@ -1,5 +1,8 @@
 var knex = require('../server/db/knex');
 var fs = require('fs');
+var request = require('request');
+var dotenv = require('dotenv').config();
+
 var tracksToCheck = {};
 var tracks = [];
 var count = 0;
@@ -34,6 +37,11 @@ knex.column('track_id').select().from('tracks').then(function(data) {
         console.log('skipped track count = ',count);
         ////////////////////////////////////////////////////
         //pass tracks array into EchoNest API call code here:
-
+        // for (var j = 0; j<20; j++) {
+        //     request("http://developer.echonest.com/api/v4/track/profile?api_key=" + process.env.echonest_key + "&format=json&id=spotify:track:" + tracks[j] + "&bucket=audio_summary")
+        //         .pipe(
+        //             fs.createWriteStream(tracks[j]));
+        // }
     });
 });
+
