@@ -5,9 +5,14 @@
 * {
     box-sizing : border-box;
 }
+  nav
+{
+   position: fixed;
+   top: 0px;
+}
 
 body {
-    font-family : 'Nunito';
+    font-family : 'Open Sans';
     line-height : 1.5;
 }
 

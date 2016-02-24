@@ -45,7 +45,7 @@
             </nav>
 
             <!-- LOGIN TO SPOTIFY -->
-            <section class="panel b-yellow" id="2">
+            <section class="panel b-purple" id="2">
                 <article class="panel_wrapper">
                     <div class="panel_content">
                         <h1 class="panel_headline">
@@ -64,10 +64,12 @@
             <section class="panel b-red" id="3" >
                 <article class="panel_wrapper">
                 <div ng-controller="Dashboard">
+
                     <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
                     <button ng-click="goToBubbles()">Go To Bubbles</button>
                     <button ng-click="goToChords()">Go To Chords</button>
                     <button ng-click="goToDashboard()">Go To Dashboard</button>
+                    
                 </div>
                 <div class='ng-view-hider' ng-view></div>
                 </article>
