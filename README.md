@@ -10,7 +10,7 @@
     User needs to log into spotify using their credentials or facebook.
 
 ## What inputs are needed to generate those outputs?
-    
+    User logs in
 
 ##A list of technologies that you plan to use
     * D3

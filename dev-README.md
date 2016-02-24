@@ -1,4 +1,8 @@
-# setup instructions josh #
+# todo #
+1. removed cached files from repo.
+
+
+# setup instructions #
 
 ## please install editor-config:
 editorconfig helps maintain equal formating between all people participating in project.
