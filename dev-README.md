@@ -1,8 +1,5 @@
 # setup instructions josh #
 
-# current state 2016.02.23 #
-currently depinjection breaks when app is split into proper mvc. will solve in morning. can't figure out why.
-
 ## please install editor-config:
 editorconfig helps maintain equal formating between all people participating in project.
 
@@ -25,4 +22,10 @@ cd server && knex migrate:latest
 from root of project run:
 `grunt jshint`
 
+# database clear instructions
+1. connect to psql
+2. \c spotifeye
+3. drop table knex_migrations, knex_migrations_lock, savedtracks, tracks, users;
+4. cd /server/db;
+5. knex migrate:latest
 
