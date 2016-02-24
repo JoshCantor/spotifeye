@@ -1,7 +1,9 @@
-/** @type {srcipt} [calls echonest api to circumvent the rate limiting] */
+#!/usr/bin/env node
+
 var request = require('request');
-var trackids = require('./arr');
 var dotenv = require('dotenv').config();
+var trackids = require('./arr');
+var fs = require('fs');
 var apiKey = process.env.echonest_key;
 
 console.log(apiKey);
@@ -10,16 +12,20 @@ console.log(apiKey);
 for (var i = 0; i < trackids.length; i++) {
 
     var options = {
-        url: "http://developer.echonest.com/api/v4/track/profile?api_key="+ apiKey + "&format=json&id=spotify:track:" + trackids[i] + "&bucket=audio_summary"
+        url: "http://developer.echonest.com/api/v4/track/profile?api_key=" + apiKey + "&format=json&id=spotify:track:" + trackids[i] + "&bucket=audio_summary"
     };
 
-    console.log(options.url);
+    // console.log(options.url);
 
     function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-        var info = JSON.parse(body);
-        console.log(info);
-      }
+        if (!error && response.statusCode == 200) {
+            var info = JSON.parse(body);
+            console.log(info);
+            // fs.writeFile(filename, data[, options], callback)
+            fs.writeFile(trackids[i] + '.js', info);
+        } else {
+            console.log('no work');
+        }
     }
 
     request(options, callback);
