@@ -1,10 +1,11 @@
-var express = require('express'),
-	app = express(),
-	bodyParser = require('body-parser'),
-	morgan = require('morgan'),
-	knex = require('./db/knex.js'),
-	request = require('request'),
-	path = require('path');;
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var knex = require('./db/knex.js');
+var request = require('request');
+var path = require('path');
+var Curl = require('node-libcurl').Curl;
 
 // require('dotenv').config();
 require('locus');
