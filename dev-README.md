@@ -1,6 +1,18 @@
 # todo #
 1. removed cached files from repo.
 
+# cron instructions #
+* * * * *
+
+The first asterisk is for specifying the minute of the run (0-59)
+The second asterisk is for specifying the hour of the run (0-23)
+The third asterisk is for specifying the day of the month for the run (1-31)
+The fourth asterisk is for specifying the month of the run (1-12)
+The fifth asterisk is for specifying the day of the week (where Sunday is equal to 0, up to Saturday is equal to 6)
+
+2 * * * * /usr/local/bin/node /Users/Op/Documents/gSchool/proj/angular-spotifeye-josh/spotifeye/echonest/echonest.js
+
+
 
 # setup instructions #
 

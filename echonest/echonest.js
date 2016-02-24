@@ -17,16 +17,18 @@ for (var i = 0; i < trackids.length; i++) {
 
     // console.log(options.url);
 
-    function callback(error, response, body) {
-        if (!error && response.statusCode == 200) {
+    request(options, generateFileCallback(i));
+}
+
+function generateFileCallback(i) {
+    return function callback(error, response, body) {
+        if (!error && response.statusCode === 200) {
             var info = JSON.parse(body);
             console.log(info);
             // fs.writeFile(filename, data[, options], callback)
-            fs.writeFile(trackids[i] + '.js', info);
+            fs.writeFile('echonest/' + trackids[i] + '.js', body);
         } else {
             console.log('no work');
         }
-    }
-
-    request(options, callback);
+    };
 }
