@@ -38,8 +38,10 @@ knex.column('track_id').select().from('tracks').then(function(data) {
 function generateFileCallback(j) {
     return function callback(error, response, body) {
         // console.log(body);
-        if (!error && response.statusCode === 200) {
+        if (!error && response.statusCode === 200 && JSON.parse(body).response.status.code === 0) {
             var info = JSON.parse(body);
+            // console.log(tracks[j]);
+            // console.log(info.response);
             console.log('writing ' + tracks[j] + ' with a happiness of ' + info.response.track.audio_summary.valence);
             fs.writeFile('jsondata/' + tracks[j] + '.json', body);
         } else {
