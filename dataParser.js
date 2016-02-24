@@ -108,7 +108,7 @@ function getData () {
 								if(danceNum > range.min && danceNum < range.max) {
 									range.size += 100;
 									if(fileCount === files.length) {
-										console.log('data', danceData, fileCount, files.length);
+										// console.log('data', danceData, fileCount, files.length);
 										resolve(danceData);
 									}
 									fileCount += 1;
@@ -143,10 +143,13 @@ function getData () {
 // 	}
 // }
 
-getData().then(function(whatAmI) {
-	console.log("blah");
-	console.log(whatAmI);
+getData().then(function(danceData) {
+	// console.log(danceData);
+	// module.exports = danceData;
+	
 });
+
+module.exports = danceData;
 
 
 

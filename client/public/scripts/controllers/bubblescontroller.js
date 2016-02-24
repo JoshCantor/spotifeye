@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('spotifeyeApp')
-	.controller('BubbleController', function($scope, $http, $location) {
+	.controller('BubbleController', function($scope, $http, $location, BubbleData) {
+
+		$scope.bubbleData = BubbleData;
 		// $scope.data = [];
 
 		// $scope.getData = function() {

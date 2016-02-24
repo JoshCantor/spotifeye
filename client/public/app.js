@@ -31,7 +31,12 @@ angular.module('spotifeyeApp')
         // })
         .when('/dashboard/bubbles', {
             templateUrl: 'views/bubbleTemplate.html',
-            controller: 'BubbleController'
+            controller: 'BubbleController',
+            resolve: {
+                BubbleData: function($http){
+                    return $http.get('/user/dashboard/bubbles');
+                }
+            }
         })
         .when('/dashboard/edgeBundle', {
             templateUrl: 'views/edgeTemplate.html',
