@@ -68,7 +68,7 @@ angular.module('spotifeyeApp')
 
                 var title = tick.append("text")
                     .attr("dy", ".32em")
-                    .text("tweets per hour");
+                    .text("saves per hour");
 
                 tick.select("line")
                     .attr("x1", title.node().getBBox().width + 6);
