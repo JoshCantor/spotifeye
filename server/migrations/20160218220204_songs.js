@@ -18,7 +18,8 @@ exports.up = function(knex, Promise) {
   		// table.primary();
   		table.string('user_id').references('user_id').inTable('users');
   		table.string('track_id');
-  	})])
+      table.string('added_at');
+  	})]);
 };
 
 exports.down = function(knex, Promise) {

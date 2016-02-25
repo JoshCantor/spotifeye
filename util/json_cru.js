@@ -11,7 +11,7 @@ knex.column('track_id').select().from('tracks').then(function(data) {
     for (var i = 0; i < data.length; i++) {
         tracksToCheck[data[i].track_id] = true;
     }
-    fs.readdir('./jsondata', function(err, files) {
+    fs.readdir('../jsondata', function(err, files) { // one or two periods?
         if (err) throw err;
         files.forEach(function(file) {
         	var fileName = file.split('.')[0];
