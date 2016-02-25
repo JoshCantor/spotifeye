@@ -144,10 +144,12 @@ function getData () {
 // }
 
 getData().then(function(danceData) {
-	// console.log(danceData);
+	console.log(danceData);
 	// module.exports = danceData;
 	
 });
+
+
 
 module.exports = danceData;
 
