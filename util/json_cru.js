@@ -2,7 +2,7 @@ var knex = require('../server/db/knex');
 var fs = require('fs');
 var request = require('request');
 require('dotenv').load();
-            // console.log('key', process.env.echonest_key);
+// console.log('key', process.env.echonest_key);
 
 var tracksToCheck = {};
 var tracks = [];
