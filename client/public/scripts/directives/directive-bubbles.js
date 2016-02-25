@@ -17,7 +17,7 @@ angular.module('spotifeyeApp')
 
             var color = d3.scale.linear()
                 .domain([-1, 5])
-                .range(['hsl(152,80%,80%)', 'hsl(228,30%,40%)'])
+                .range(['hsl(180,93%,51%)', 'hsl(228,30%,40%)'])
                 .interpolate(d3.interpolateHcl);
 
             var pack = d3.layout.pack()
