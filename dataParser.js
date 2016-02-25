@@ -55,38 +55,6 @@ var danceData = {
 			}]
 };
 
-// var getData = function () {
-// 	fs.readdir('./jsondata', function(err, files) {
-// 		if (err) throw err;
-		
-// 		var fileCount = 1;
-// 		files.forEach(function(file) {
-// 			fs.readFile("./jsondata/" + file, function(err, data) {
-// 				if (err) throw err;
-				
-// 				// var trackPromise = new Promise(function(resolve, reject) {
-
-// 				var json = JSON.parse(data.toString());
-// 				if (json.response.track !== undefined) {
-					
-// 					var danceNum = json.response.track.audio_summary.danceability;
-// 					danceData.children.forEach(function(range) {
-// 						if(danceNum > range.min && danceNum < range.max) {
-// 							range.size += 100;
-// 							if(fileCount === files.length) {
-// 								//console.log('data', danceData, fileCount, files.length);
-// 								// return danceData;
-// 							}
-// 							fileCount += 1;
-// 						}
-						
-// 					});
-// 				}
-			
-// 			});	
-// 		});
-// 	});
-// };
 function getData () {
 	return new Promise(function(resolve, reject) {
 		try{
@@ -130,22 +98,8 @@ function getData () {
 	});	
 };
 
-// function addSize() {
-// 	var json = JSON.parse(data.toString());
-// 	if (json.response.track !== undefined) {
-		
-// 		var danceNum = json.response.track.audio_summary.danceability;
-// 		danceData.children.forEach(function(range) {
-// 			if(danceNum > range.min && danceNum < range.max) {
-// 				range.size += 100;
-// 			}
-// 		});
-// 	}
-// }
 
 getData().then(function(danceData) {
-	// console.log(danceData);
-	// module.exports = danceData;
 	
 });
 
