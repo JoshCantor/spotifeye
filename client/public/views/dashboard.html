@@ -15,11 +15,14 @@
 		</div>
 		<div class="col-md-6" style="text-align:center">
 			<div ng-repeat="n in artArray track by $index">
-				<img src="{{n[0].album_art}}" height="100px" width="100px">
-				<a onclick="this.firstChild.play()" class="button"><audio controls src="{{n[0].preview_url}}"></audio></a>
+				<div ng-if="$index < 7" class="song-preview">
+					<img src="{{n[0].album_art}}" height="100px" width="100px">
+					<a onclick="this.firstChild.play()" class="button"><audio controls src="{{n[0].preview_url}}"></audio></a>
+				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-3" style="text-align:center">
+			<h2>Visualizations </h2>
 			<button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
 			<button ng-click="goToBubbles()">Go To Bubbles</button>
 			<button ng-click="goToChords()">Go To Chords</button>
