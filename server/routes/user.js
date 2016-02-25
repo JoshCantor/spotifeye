@@ -1,17 +1,18 @@
-var express = require("express");
+var express = require('express');
 var router = express.Router();
 var request = require('request');
 var knex = require('../db/knex');
 
-router.get("/", function(req, res, next) {
+var d3data = require('../../dataParser.js')
+
+router.get('/user', function(req, res, next) {
+    // res.sendFile(process.cwd() + '/server/views/index.html');
+    /** mau5 - temp test of sending new landing/index.html with loginbutton */
     res.sendFile(process.cwd() + '/server/views/index.html');
 });
 
-router.get('/bubble', function(req, res, next) {
-    knex('songs').then(function(data){
-    	console.log(data);
-    	res.json(data);
-    });
+router.get('/dashboard/bubbles', function(req, res, next) {
+	res.send(d3data)
 });
 
 module.exports = router;
