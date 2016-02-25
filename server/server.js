@@ -4,7 +4,7 @@ var express = require('express'),
 	morgan = require('morgan'),
 	knex = require('./db/knex.js'),
 	request = require('request'),
-	path = require('path');;
+	path = require('path');
 
 // require('dotenv').config();
 require('locus');

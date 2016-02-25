@@ -4,6 +4,7 @@ module.exports = function(grunt) {
     jshint: {
       files: ['Gruntfile.js', 'server/**/*.js', 'client/**/*.js'],
       options: {
+        reporter: require('jshint-stylish'),
         globals: {
           jQuery: true
         }
@@ -17,7 +18,5 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
-
   grunt.registerTask('default', ['jshint']);
-
 };
