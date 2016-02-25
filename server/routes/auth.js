@@ -46,7 +46,7 @@ router.get('/spotify/callback', function(req, res) {
                         // })
                         var items = [];
                         getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
-                        res.redirect('/');
+                        res.redirect('/#/dashboard/user/'+user_id);
                     });
                 }
                 else {
@@ -55,7 +55,7 @@ router.get('/spotify/callback', function(req, res) {
                     // })
                     var items = [];
                     getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
-                    res.redirect('/');
+                    res.redirect('/#/dashboard/user/'+user_id);
                 }
             });
         });

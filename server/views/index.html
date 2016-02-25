@@ -8,6 +8,7 @@
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<!-- mau5 original plain css -->
 	<link rel="stylesheet" type="text/css" href="css/main.css"> 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <style type="text/css">
         .ng-view-hider.ng-leave {
             display: none;
@@ -62,17 +63,23 @@
 
             <!-- PANEL THREE -->
             <section class="panel b-red" id="3" >
-                <article class="panel_wrapper">
-                <div ng-controller="Dashboard">
+                <!-- <article class="panel_wrapper"> -->
+                <!-- <div ng-controller="DashboardController">
 
                     <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
                     <button ng-click="goToBubbles()">Go To Bubbles</button>
                     <button ng-click="goToChords()">Go To Chords</button>
                     <button ng-click="goToDashboard()">Go To Dashboard</button>
                     
+                </div> -->
+
+                <div ng-view>
+                    
+
                 </div>
-                <div class='ng-view-hider' ng-view></div>
-                </article>
+
+
+                <!-- </article> -->
             </section>
         </div>
     </div>
@@ -87,14 +94,11 @@
 
     <!-- app scripts -->
     <script type="text/javascript" src="/app.js"></script>
-    <script type="text/javascript" src="/routes.js"></script>
     <script type="text/javascript" src="/scripts/controllers/maincontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/bubblescontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/chordscontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/edgecontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/dashboardcontroller.js"></script>
-    <script type="text/javascript" src="/scripts/factories/factory-bubbles.js"></script>
-    <script type="text/javascript" src="/scripts/factories/factory-edge.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-bubbles.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-chords.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-edge.js"></script>
