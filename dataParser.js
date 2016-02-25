@@ -349,7 +349,6 @@ function _setDataAttr (currentChildObj, currentChildName, json, files, resolve) 
 }
 
 getData().then(function(data) {	
-	console.log(data.children[1].children[0]);
 }).catch(function(err) {
 	throw err;
 });
