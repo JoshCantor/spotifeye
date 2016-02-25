@@ -10,8 +10,8 @@
          .controller('MainController', MainController);
      MainController.$inject = ['$scope'];
      function MainController($scope) {
-         $scope.hello = "badbye";
-         $scope.title = "a;lkdjf;adsfjk"
+         $scope.hello = "hello";
+         $scope.title = " spotifEYE"
 
      }
  })();

@@ -134,7 +134,3 @@ getData().then(function(danceData) {
 
 module.exports = danceData;
 
-
-
-
-

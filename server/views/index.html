@@ -8,6 +8,7 @@
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<!-- mau5 original plain css -->
 	<link rel="stylesheet" type="text/css" href="css/main.css"> 
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <style type="text/css">
         .ng-view-hider.ng-leave {
             display: none;
@@ -61,16 +62,24 @@
             </section>
 
             <!-- PANEL THREE -->
-            <section class="panel b-red" id="3" >
-                <article class="panel_wrapper">
-                <div ng-controller="Dashboard">
+            <section class="panel-dash b-red" id="3" >
+                <!-- <article class="panel_wrapper"> -->
+                <!-- <div ng-controller="DashboardController">
+
                     <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
                     <button ng-click="goToBubbles()">Go To Bubbles</button>
                     <button ng-click="goToChords()">Go To Chords</button>
                     <button ng-click="goToDashboard()">Go To Dashboard</button>
+                    
+                </div> -->
+
+                <div ng-view>
+                    
+
                 </div>
-                <div class='ng-view-hider' ng-view></div>
-                </article>
+
+
+                <!-- </article> -->
             </section>
         </div>
     </div>

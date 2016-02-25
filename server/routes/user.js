@@ -15,4 +15,13 @@ router.get('/dashboard/bubbles', function(req, res, next) {
 	res.send(d3data)
 });
 
+
+router.get('/:id/info', function(req, res, next){ //SENDS USER JSON DATA
+	var user_id = req.params.id;
+	knex('users').where({user_id:user_id}).then(function(data){
+		res.send(data)
+	})
+})
+
+
 module.exports = router;
