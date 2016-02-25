@@ -224,6 +224,7 @@ ul {
     display                 : -webkit-box;
     min-height              : 100vh;
     overflow                : hidden;
+    width:                  : 100%;
 
 }
 
