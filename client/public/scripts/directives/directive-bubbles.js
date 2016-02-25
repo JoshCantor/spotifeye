@@ -11,10 +11,9 @@ angular.module('spotifeyeApp')
         },
         link: function(scope, element, attrs) {
             var bubbleService = scope.bubbleService;
-            console.log(bubbleService)
-            console.log('scope', scope)
+
             var margin = 20,
-                diameter = 700;
+                diameter = 1300;
 
             var color = d3.scale.linear()
                 .domain([-1, 5])
