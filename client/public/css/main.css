@@ -217,6 +217,15 @@ ul {
     -webkit-box-align       : center;
     -webkit-align-items     : center;
 }
+.panel-dash {
+    display                 : -webkit-flex;
+    display                 : -ms-flexbox;
+    display                 : flex;
+    display                 : -webkit-box;
+    min-height              : 100vh;
+    overflow                : hidden;
+
+}
 
 .panel_wrapper {
     padding             : 7vh 7vw;
