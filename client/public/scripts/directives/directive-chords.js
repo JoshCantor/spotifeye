@@ -4,10 +4,10 @@ angular.module('spotifeyeApp')
 	return {
 		link: function(scope, element, attrs) {
 			var matrix = [
-			  [11975,  5871, 8916, 2868],
-			  [ 1951, 10048, 2060, 6171],
-			  [ 8010, 16145, 8090, 8045],
-			  [ 1013,   990,  940, 6907]
+			  [11975, 5871, 8916, 2868],
+			  [1951, 10048, 2060, 6171],
+			  [8010, 16145, 8090, 8045],
+			  [1013, 990, 940, 6907]
 			];
 
 			var width = 600,
@@ -15,7 +15,7 @@ angular.module('spotifeyeApp')
 			    outerRadius = Math.min(width, height) / 2 - 10,
 			    innerRadius = outerRadius - 24;
 
-			var formatPercent = d3.format(".1%");
+			var formatPercent = d3.format('.1%');
 
 			var arc = d3.svg.arc()
 			    .innerRadius(innerRadius)
@@ -29,15 +29,15 @@ angular.module('spotifeyeApp')
 			var path = d3.svg.chord()
 			    .radius(innerRadius);
 
-			var svg = d3.select(".chords").append("svg")
-			    .attr("width", width)
-			    .attr("height", height)
-			  .append("g")
-			    .attr("id", "circle")
-			    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+			var svg = d3.select('.chords').append('svg')
+			    .attr('width', width)
+			    .attr('height', height)
+			  .append('g')
+			    .attr('id', 'circle')
+			    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
-			svg.append("circle")
-			    .attr("r", outerRadius);
+			svg.append('circle')
+			    .attr('r', outerRadius);
 
 			// queue()
 			//     .defer(d3.csv, "cities.csv")
@@ -51,11 +51,11 @@ angular.module('spotifeyeApp')
 			  layout.matrix(matrix);
 
 			  // Add a group per neighborhood.
-			  var group = svg.selectAll(".group")
+			  var group = svg.selectAll('.group')
 			      .data(layout.groups)
-			    .enter().append("g")
-			      .attr("class", "group")
-			      .on("mouseover", mouseover);
+			    .enter().append('g')
+			      .attr('class', 'group')
+			      .on('mouseover', mouseover);
 
 			  // Add a mouseover title.
 			  // group.append("title").text(function(d, i) {
@@ -63,18 +63,18 @@ angular.module('spotifeyeApp')
 			  // });
 
 			  // Add the group arc.
-			  var groupPath = group.append("path")
-			      .attr("id", function(d, i) { return "group" + i; })
-			      .attr("d", arc);
+			  var groupPath = group.append('path')
+			      .attr('id', function(d, i) { return 'group' + i; })
+			      .attr('d', arc);
 			      // .style("fill", function(d, i) { return cities[i].color; });
 
 			  // Add a text label.
-			  var groupText = group.append("text")
-			      .attr("x", 6)
-			      .attr("dy", 15);
+			  var groupText = group.append('text')
+			      .attr('x', 6)
+			      .attr('dy', 15);
 
-			  groupText.append("textPath")
-			      .attr("xlink:href", function(d, i) { return "#group" + i; })
+			  groupText.append('textPath')
+			      .attr('xlink:href', function(d, i) { return '#group' + i; });
 			      // .text(function(d, i) { return cities[i].name; });
 
 			  // Remove the labels that don't fit. :(
@@ -82,12 +82,12 @@ angular.module('spotifeyeApp')
 			      .remove();
 
 			  // Add the chords.
-			  var chord = svg.selectAll(".chord")
+			  var chord = svg.selectAll('.chord')
 			      .data(layout.chords)
-			    .enter().append("path")
-			      .attr("class", "chord")
+			    .enter().append('path')
+			      .attr('class', 'chord')
 			      // .style("fill", function(d) { return cities[d.source.index].color; })
-			      .attr("d", path);
+			      .attr('d', path);
 
 			  // Add an elaborate mouseover title for each chord.
 			  // chord.append("title").text(function(d) {
@@ -100,12 +100,12 @@ angular.module('spotifeyeApp')
 			  // });
 
 			  function mouseover(d, i) {
-			    chord.classed("fade", function(p) {
-			      return p.source.index != i
-			          && p.target.index != i;
+			    chord.classed('fade', function(p) {
+			      return p.source.index != i &&
+			          p.target.index != i;
 			    });
 			  }
 			// }
 		}
-	}
+	};
 });

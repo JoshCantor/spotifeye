@@ -20,7 +20,7 @@ angular.module('spotifeyeApp')
             templateUrl: 'views/bubbleTemplate.html',
             controller: 'BubbleController',
             resolve: {
-                BubbleData: function($http){
+                BubbleData: function($http) {
                     return $http.get('/user/dashboard/bubbles');
                 }
             }

@@ -163,5 +163,5 @@ angular.module('spotifeyeApp')
                 return imports;
             }
         }
-    }
+    };
 });

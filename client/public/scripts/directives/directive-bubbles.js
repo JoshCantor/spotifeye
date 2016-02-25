@@ -11,8 +11,8 @@ angular.module('spotifeyeApp')
         },
         link: function(scope, element, attrs) {
             var bubbleService = scope.bubbleService;
-            console.log(bubbleService)
-            console.log('scope', scope)
+            console.log(bubbleService);
+            console.log('scope', scope);
             var margin = 20,
                 diameter = 700;
 
@@ -26,7 +26,7 @@ angular.module('spotifeyeApp')
                 .size([diameter - margin, diameter - margin])
                 .value(function(d) {
                     return d.size;
-                })
+                });
 
             var svg = d3.select('.bubbles').append('svg')
                 .attr('width', diameter)
@@ -116,5 +116,5 @@ angular.module('spotifeyeApp')
 
             d3.select(self.frameElement).style('height', diameter + 'px');
         }
-    }
+    };
 });
