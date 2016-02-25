@@ -10,7 +10,10 @@
 
 angular.module('spotifeyeApp')
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider','$sceDelegateProvider', function($routeProvider,$sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        'https://p.scdn.co/**']);
     $routeProvider
         .when('/dashboard/user/:user_id', {
             templateUrl: 'views/dashboard.html',
