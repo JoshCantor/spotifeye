@@ -6,6 +6,7 @@ var doc = $(document);
 var l = $('.scrolly');
 var panel = $('.panel');
 var vh = $(window).height();
+var vw = $(window).width();
 
 var openMenu = function() {
     burger.classList.toggle('burger--active');
