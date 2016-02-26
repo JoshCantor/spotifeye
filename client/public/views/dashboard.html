@@ -15,7 +15,7 @@
 		</div>
 		<div class="col-md-6" style="text-align:center">
 			<div ng-repeat="n in artArray track by $index">
-				<div ng-if="$index < 7" class="song-preview">
+				<div ng-if="$index < 5" class="song-preview">
 					<img src="{{n[0].album_art}}" height="100px" width="100px">
 					<a onclick="this.firstChild.play()" class="button"><audio controls src="{{n[0].preview_url}}"></audio></a>
 				</div>
