@@ -1,30 +1,35 @@
-<link rel="stylesheet" type="text/css" href="css/grid100.css"> 
+<link rel="stylesheet" type="text/css" href="css/grid100.css">
 <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
 <div class="container">
-	<div class='row' id='header' style="text-align:center">
-				<h1>SPOTIFEYE</h1>
-				<h2>your personal music visualizer</h2>
-			</div>
-	<div class="row">
-		<div class="col-md-3">
-			<div class="border" style="border:solid; text-align:center">
-				Hello, <h3>{{displayName}}</h3>
-				<img src="{{picture}}">
-				<p>We were able to retrieve <b>{{artArray.length}}</b> songs from your Spotify account!</p>
-			</div>
-		</div>
-		<div class="col-md-6" style="text-align:center">
-			<div ng-repeat="n in artArray track by $index">
-				<div ng-if="$index < 5" class="song-preview">
-					<img src="{{n[0].album_art}}" height="100px" width="100px">
-					<a onclick="this.firstChild.play()" class="button"><audio controls src="{{n[0].preview_url}}"></audio></a>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-3" style="text-align:center">
-			<h2>Visualizations </h2>
-			<button ng-click="goToTime()">Go To Hierarchical Edge Bundling</button>
-			<button ng-click="goToBubbles()">Go To Bubbles</button>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="border" style="border:none; text-align:center">
+                <h3 class="hit-the-floor-dash">{{displayName}}</h3>
+                <br>
+                <div class="avatar-frame" style="border: none;">
+                    <img src="{{picture}}" style="width: 200px; height: 200px; border-radius: 100px; -webkit-border-radius:100px"></div>
+            </div>
+        </div>
+        <div class="col-md-6" style="text-align:center">
+            <div ng-repeat="n in artArray track by $index">
+                <div ng-if="$index < 5" class="song-preview">
+                    <img src="{{n[0].album_art}}" height="100px" width="100px" style="margin-bottom: 10px;">
+                    <a onclick="this.firstChild.play()" class="button">
+                        <audio controls src="{{n[0].preview_url}}"></audio>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="text-align:center">
+            <h2>
+                Visualizations
+            </h2>
+            <button ng-click="goToTime()">
+                Go To Hierarchical Edge Bundling
+            </button>
+            <button ng-click="goToBubbles()">
+                Go To Bubbles
+            </button>
+        </div>
+    </div>
 </div>
