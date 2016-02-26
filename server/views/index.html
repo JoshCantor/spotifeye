@@ -7,10 +7,11 @@
 	<!-- d3 -->
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<!-- mau5 original plain css -->
-    
+
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="css/main.css"> 
-    
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/hit-the-floor.css">
+
 
     <style type="text/css">
         .ng-view-hider.ng-leave {
@@ -19,12 +20,12 @@
     </style>
 </head>
 
-<body>    
+<body>
     <div>
         <div>
             <!-- SIDE NAVBAR -->
             <nav class="nav">
-                <div class="burger"> <i class="fa fa-bars"></i>
+                <div class="burger"> <img src="media/eyecon.png" alt="" style="height: 50px; width: 50px">
                     <div class="burger_patty"></div>
                 </div>
 
@@ -52,7 +53,7 @@
             <section class="panel b-yellow" id="2">
                 <article class="panel_wrapper">
                     <div class="panel_content">
-                        <h1 class="panel_headline">
+                        <h1 class="hit-the-floor">
                             {{ title }}
                         </h1>
                         <div class="panel_block"></div>
@@ -69,7 +70,7 @@
                 <article class="panel_wrapper">
 
                 <div ng-view>
-                    
+
 
                 </div>
 
@@ -95,7 +96,7 @@
     <script type="text/javascript" src="/scripts/controllers/dashboardcontroller.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-bubbles.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-time.js"></script>
- 
+
 
     <!-- mau5 temp javascript - needs to be served with angular-->
     <script type="text/javascript" src="js/mau5/main-animation.js"></script>
