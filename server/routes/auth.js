@@ -5,7 +5,7 @@ require('dotenv').load();
 
 var knex = require('../db/knex');
 
-var redirect_uri = "http://localhost:3000/auth/spotify/callback";
+var redirect_uri = "http://localhost:5000/auth/spotify/callback";
 
 router.get('/spotify', function(req, res){
     var scope = 'user-read-private user-read-email playlist-read-private streaming user-library-read';
@@ -18,7 +18,7 @@ router.get('/spotify/callback', function(req, res) {
         url: 'https://accounts.spotify.com/api/token',
         form: {
             code: code,
-            redirect_uri: 'http://localhost:3000/auth/spotify/callback',
+            redirect_uri: 'http://localhost:5000/auth/spotify/callback',
             grant_type: 'authorization_code'
         },
         headers: {
