@@ -616,3 +616,11 @@ ul {
  -ms-transform     : rotate(45deg);
  -webkit-transform : rotate(45deg);
 }
+
+.button-top {
+    margin-top: 150px;
+}
+
+.button-bottom {
+    margin-top: 100px;
+}

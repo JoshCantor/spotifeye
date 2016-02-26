@@ -14,7 +14,7 @@ angular.module('spotifeyeApp')
             $scope.displayName = data.data[0].display_name;
             $scope.picture = data.data[0].profile_pic;
             $location.hash('3');
-            $anchorScroll();
+            // $anchorScroll();
             // $scope.gotoElement = function(eID) {
                 // set the location.hash to the id of
                 // the element you wish to scroll to.
