@@ -1,0 +1,137 @@
+@import url("http://fonts.googleapis.com/css?family=Nixie+One");
+@import url("http://fonts.googleapis.com/css?family=League+Script");
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.sign {
+  /*transform: rotate(-3deg);*/
+}
+/*body {
+  margin: 70px;
+  background: #313131;
+  font-family: 'Nixie One', Helvetica, Arial, sans-serif;
+  font-size: 50px;
+}*/
+#title {
+  font-size: 75px;
+}
+#trav {
+  -o-animation: blink 0.01s infinite alternate;
+  animation: blink 0.01s infinite alternate;
+}
+#fade {
+  opacity: 0.8;
+  color: #ebffff;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.3), 0 0px 15px #fff, 0 0 10px #C7F60E, 0 0 50px #C7F60E;
+  -webkit-animation: fade 3s infinite alternate;
+  -moz-animation: fade 3s infinite alternate;
+  -o-animation: fade 3s infinite alternate;
+  animation: fade 3s infinite alternate;
+}
+.neon-blue {
+  margin: 0 auto;
+  text-align: center;
+  color: #ebffff;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.3), 0 0px 15px #fff, 0 0 10px #C7F60E, 0 0 50px #C7F60E;
+}
+.neon-purple {
+  font-family: 'League Script', Helvetica, Arial, sans-serif;
+  font-size: 100px;
+  margin: 0 auto;
+  text-align: center;
+  color: #ccf;
+  text-shadow: 2px 2px 1px rgba(0,0,0,0.5), 0 0 20px #fff, 0 0 10px #7d26cd, 0 0 50px #7d26cd;
+}
+@-moz-keyframes blink {
+  70% {
+    opacity: 0.7;
+  }
+}
+@-webkit-keyframes blink {
+  45% {
+    opacity: 0.5;
+  }
+}
+@-o-keyframes blink {
+  70% {
+    opacity: 0.7;
+  }
+}
+@keyframes blink {
+  70% {
+    opacity: 0.7;
+  }
+}
+@-moz-keyframes fade {
+  40% {
+    opacity: 0.8;
+  }
+  42% {
+    opacity: 0.1;
+  }
+  43% {
+    opacity: 0.8;
+  }
+  45% {
+    opacity: 0.1;
+  }
+  46% {
+    opacity: 0.8;
+  }
+}
+@-webkit-keyframes fade {
+  40% {
+    opacity: 0.8;
+  }
+  42% {
+    opacity: 0.1;
+  }
+  43% {
+    opacity: 0.8;
+  }
+  45% {
+    opacity: 0.1;
+  }
+  46% {
+    opacity: 0.8;
+  }
+}
+@-o-keyframes fade {
+  40% {
+    opacity: 0.8;
+  }
+  42% {
+    opacity: 0.1;
+  }
+  43% {
+    opacity: 0.8;
+  }
+  45% {
+    opacity: 0.1;
+  }
+  46% {
+    opacity: 0.8;
+  }
+}
+@keyframes fade {
+  40% {
+    opacity: 0.8;
+  }
+  42% {
+    opacity: 0.1;
+  }
+  43% {
+    opacity: 0.8;
+  }
+  45% {
+    opacity: 0.1;
+  }
+  46% {
+    opacity: 0.8;
+  }
+}
