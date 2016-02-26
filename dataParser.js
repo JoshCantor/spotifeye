@@ -357,7 +357,3 @@ getData().then(function(data) {
 
 module.exports = data;
 
-
-
-
-

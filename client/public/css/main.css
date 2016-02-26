@@ -5,9 +5,14 @@
 * {
     box-sizing : border-box;
 }
+  nav
+{
+   position: fixed;
+   top: 0px;
+}
 
 body {
-    font-family : 'Nunito';
+    font-family : 'Open Sans';
     line-height : 1.5;
 }
 
@@ -211,6 +216,16 @@ ul {
     align-items             : center;
     -webkit-box-align       : center;
     -webkit-align-items     : center;
+}
+.panel-dash {
+    display                 : -webkit-flex;
+    display                 : -ms-flexbox;
+    display                 : flex;
+    display                 : -webkit-box;
+    min-height              : 100vh;
+    overflow                : hidden;
+    width:                  : 100%;
+
 }
 
 .panel_wrapper {

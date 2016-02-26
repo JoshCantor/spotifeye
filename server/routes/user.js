@@ -26,11 +26,29 @@ router.get('/dashboard/:d3view', function(req, res, next) {
 });
 
 
-router.get('/:id/dashboard', function(req, res, next){ //SENDS USER JSON DATA
+router.get('/:id/info', function(req, res, next){ //SENDS USER JSON DATA
 	var user_id = req.params.id;
 	knex('users').where({user_id:user_id}).then(function(data){
 		res.send(data)
 	})
+})
+
+router.get('/:id/albumart', function(req, res, next){
+	var user_id = req.params.id;
+	var album_art_arr = [];
+	knex('savedtracks').where({user_id:user_id}).then(function(data){
+		var trackPromises = [];
+		for(var i=0; i < data.length; i++){
+			var currentTrack = data[i].track_id;
+			var tp = knex('tracks').where({track_id:currentTrack});
+			trackPromises.push(tp);
+		}
+
+		Promise.all(trackPromises).then(function(listOfTrackResponses) {
+			res.send(listOfTrackResponses)
+		});
+	})
+	
 })
 
 
