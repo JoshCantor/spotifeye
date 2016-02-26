@@ -4,26 +4,11 @@ var express = require('express'),
 	morgan = require('morgan'),
 	knex = require('./db/knex.js'),
 	request = require('request'),
-	path = require('path'),
-	pg = require('pg');
+	path = require('path');
 
-// require('dotenv').config();
 require('locus');
 
-pg.connect(process.env.DATABASE_URL + '?ssl=true', function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
 
-  client
-    .query('SELECT table_schema,table_name FROM information_schema.tables;')
-    .on('row', function(row) {
-      console.log(JSON.stringify(row));
-    });
-});
-
-
-// require('dotenv').config();
-//test
 
 var auth = require('./routes/auth');
 var user = require('./routes/user');

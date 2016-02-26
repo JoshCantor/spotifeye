@@ -2,8 +2,8 @@
 
 angular.module('spotifeyeApp')
 	.controller('Dashboard', function($scope, $http, $location) {
-		$scope.goToEdge = function() {
-			$location.path('/dashboard/edgeBundle');
+		$scope.goToTime = function() {
+			$location.path('/dashboard/time');
 		};
 
 		$scope.goToBubbles = function() {
