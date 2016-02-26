@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="css/grid100.css">
 <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+<<<<<<< HEAD
 
 <section class="panel b-red" id="3" ng-hide="lockWindow.showLogin" >
     <article class="panel_wrapper"> 
@@ -16,22 +17,28 @@
                     </div>
                 </div>
                 <div class="col-md-6" style="text-align:center">
-                    <div ng-repeat="n in artArray track by $index">
-                        <div ng-if="$index < 5" class="song-preview">
-                            <img src="{{n[0].album_art}}" height="100px" width="100px" style="margin-bottom: 10px;">
+            <div class='onealbum' ng-repeat="n in artArray track by $index" ng-if="$index < 16">
+                <div class="f1_container">
+                    <div class="f1_card shadow">
+                        <div class="front face">
+                            <img class="albumart" src="{{n[0].album_art}}" />
+                        </div>
+                        <div class="back face center">
+                            <h4>{{n[0].track_name}}</h4>
+                            <!-- <h3>Disclosure</h3> -->
                             <a onclick="this.firstChild.play()" class="button">
                                 <audio controls src="{{n[0].preview_url}}"></audio>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3" style="text-align:center">
-                <div style="height: 200px"></div>
-                <button class="btn inset" id="btn-login" ng-click="goToBubbles()">Analyze Your Music</button>
-                <div style="height:60px;"></div>
-                <button class="btn inset" id="btn-login" ng-click="goToTime()">View Your Songs Saved Versus Time of Day</button>
-                </div>
             </div>
         </div>
+        <div class="col-md-3" style="text-align:center">
+            <div style="height: 200px"></div>
+            <button class="btn inset" id="btn-login" ng-click="goToBubbles()">Analyze Your Music</button>
+            <div style="height:60px;"></div>
+            <button class="btn inset" id="btn-login" ng-click="goToTime()">View Your Songs Saved Versus Time of Day</button>
+        </div>   
     </article>  
 </section>
