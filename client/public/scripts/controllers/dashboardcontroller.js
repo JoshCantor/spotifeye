@@ -5,6 +5,7 @@ angular.module('spotifeyeApp')
 	.controller('DashboardController', function($scope, $http, $location, $routeParams, $anchorScroll, lockWindow) {
 
         $scope.goToTime = function() {
+            console.log('this, too');
             $location.path('/dashboard/time');
         };
 
@@ -30,13 +31,14 @@ angular.module('spotifeyeApp')
         });
 
         $scope.goToBubbles = function() {
+            console.log('hopefully');
             $location.path('/dashboard/bubbles');
         };
 
 		$scope.lockWindow = function() {
 			lockWindow.hideLogin()
 		}
-
+        console.log('asdfa');
 		$scope.lockWindow();
 	});
 

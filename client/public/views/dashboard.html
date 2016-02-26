@@ -3,6 +3,8 @@
 
 <section class="panel b-red" id="3" ng-hide="lockWindow.showLogin" >
     <article class="panel_wrapper"> 
+        <link rel="stylesheet" type="text/css" href="css/grid100.css">
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -24,8 +26,10 @@
                     </div>
                 </div>
                 <div class="col-md-3" style="text-align:center">
-                    <button class="btn inset button-bottom" id="btn-login" ng-click="goToBubbles()">Analyze Your Music</button>
-                    <button class="btn inset button-top" id="btn-login" ng-click="goToTime()">View Your Songs Saved Versus Time of Day</button>
+                <div style="height: 200px"></div>
+                <button class="btn inset" id="btn-login" ng-click="goToBubbles()">Analyze Your Music</button>
+                <div style="height:60px;"></div>
+                <button class="btn inset" id="btn-login" ng-click="goToTime()">View Your Songs Saved Versus Time of Day</button>
                 </div>
             </div>
         </div>
