@@ -14,6 +14,7 @@ angular.module('spotifeyeApp')
             // debugger;
             var margin = 20,
                 diameter = 0.8 * window.innerWidth;
+                // height = 1.0 * window.innerHeight;
 
             var color = d3.scale.linear()
                 .domain([-1, 5])
@@ -67,7 +68,13 @@ angular.module('spotifeyeApp')
             var text = svg.selectAll('text')
                 .data(nodes)
                 .enter().append('text')
-                .attr('class', 'label')
+                .attr('class', function(d){
+                    // if ( d.r < 50 ) {
+                    //     return 'label small';
+                    // } else {
+                        return 'label';
+                    // }
+                })
                 .style('fill-opacity', function(d) {
                     return d.parent === bubbleService ? 1 : 0;
                 })

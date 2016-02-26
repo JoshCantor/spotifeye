@@ -17,7 +17,8 @@
   /*font: 11px "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-anchor: middle;
-  text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+  /*text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;*/
+  text-shadow: 0 0 4px #fff;
   /*color:white;*/
 }
 
@@ -26,9 +27,47 @@
 .node--leaf {
   pointer-events: none;
 }
-
+    #bubble_legend {
+      width: 400px;
+      height:85px;
+      background: linear-gradient(to right, #C7F60E, rgb(249,38,114));
+      border: 4px solid rgb(0, 191, 229);
+      border-radius: 80px;
+      /*margin: 20px;*/
+      margin-right: auto;
+      margin-left: auto;
+    }
+    #bubble_legend > div {
+      width: 30%;
+      margin-left: 20px;
+      margin-right: 20px;
+      font-family: "Oswald", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      /*text-anchor: middle;*/
+      text-shadow: 0 0 3px #fff;
+    }
+    #bubble_legend > div:first-child {
+      float:left;
+    }
+    #bubble_legend > div:last-child {
+      float:right;
+      text-align: right;
+    }
+/*  .small {
+    display: none;
+  }
+  .small:hover {
+    display: inline;
+  }
+*/
 </style>
-<div class="bubbles" bubbles bubble-service=bubbleData></div>
+
+<div class="bubbles" bubbles bubble-service=bubbleData>
+    <h1 style='text-align: center;'>Acoustic Attributes</h1>
+    <div id='bubble_legend'>
+      <div><h2>low</h2></div>
+      <div><h2>high</h2></div>
+  </div>
+</div>
 
 
 
