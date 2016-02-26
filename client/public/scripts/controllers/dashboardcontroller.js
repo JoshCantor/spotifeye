@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spotifeyeApp')
-	.controller('DashboardController', function($scope, $http, $location, $routeParams, $anchorScroll) {
+	.controller('DashboardController', function($scope, $http, $location, $routeParams, $anchorScroll, lockWindow) {
 
 		$scope.goToTime = function() {
 			$location.path('/dashboard/time');
@@ -25,8 +25,11 @@ angular.module('spotifeyeApp')
 			$location.path('/dashboard/bubbles');
 		};
 
-		$scope.goToChords = function() {
-			$location.path('/dashboard/chords');
-		};
+		$scope.lockWindow = function() {
+			lockWindow.hideLogin()
+		}
+
+		$scope.lockWindow();
+
 
 	});

@@ -50,7 +50,7 @@
             </nav>
 
             <!-- LOGIN TO SPOTIFY -->
-            <section class="panel b-yellow" id="2">
+            <section class="panel b-yellow" id="2" ng-show="lockWindow">
                 <article class="panel_wrapper">
                     <div class="panel_content">
                         <h1 class="hit-the-floor">
@@ -59,7 +59,7 @@
                         <div class="panel_block"></div>
                         <div class="wrap">
                             <!-- LOGIN BUTTON -->
-                            <a class="btn inset" href="/auth/spotify" id="btn-login">LOGIN</a>
+                            <a class="btn inset" href="/auth/spotify" id="btn-login" ng-click='hideDiv()'>LOGIN</a>
                         </div>
                     </div>
                 </article>
@@ -96,6 +96,7 @@
     <script type="text/javascript" src="/scripts/controllers/dashboardcontroller.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-bubbles.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-time.js"></script>
+    <script type="text/javascript" src="/scripts/service/service-windowLock.js"></script>
 
 
     <!-- mau5 temp javascript - needs to be served with angular-->
