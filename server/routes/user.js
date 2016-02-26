@@ -6,7 +6,6 @@ var knex = require('../db/knex');
 var bubblesData = require('../../dataParser.js');
 // var timeData = require('../../time.csv');
 
-
 router.get('/user', function(req, res, next) {
     // res.sendFile(process.cwd() + '/server/views/index.html');
     /** mau5 - temp test of sending new landing/index.html with loginbutton */
