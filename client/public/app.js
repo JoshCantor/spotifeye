@@ -10,7 +10,7 @@
 
 angular.module('spotifeyeApp')
 
-.config(['$routeProvider','$sceDelegateProvider', function($routeProvider,$sceDelegateProvider) {
+.config(['$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
         'self',
         'https://p.scdn.co/**']);

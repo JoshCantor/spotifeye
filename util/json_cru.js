@@ -17,19 +17,19 @@ knex.column('track_id').select().from('tracks').then(function(data) {
         	var fileName = file.split('.')[0];
         	tracksToCheck[fileName] = false;
         });
-        for(var prop in tracksToCheck) {
-        	if(tracksToCheck[prop]) {
+        for (var prop in tracksToCheck) {
+        	if (tracksToCheck[prop]) {
         		tracks.push(prop);
         	} else {
         		count++;
         	}
         }
-        console.log('final array length = ',tracks.length);
-        console.log('skipped track count = ',count);
+        console.log('final array length = ', tracks.length);
+        console.log('skipped track count = ', count);
         var offset = 0;
-        for (var j = 0+ offset; j<20 + offset; j++) {
+        for (var j = 0 + offset; j < 20 + offset; j++) {
             var options = {
-                url: "http://developer.echonest.com/api/v4/track/profile?api_key=" + process.env.echonest_key + "&format=json&id=spotify:track:" + tracks[j] + "&bucket=audio_summary"
+                url: 'http://developer.echonest.com/api/v4/track/profile?api_key=' + process.env.echonest_key + '&format=json&id=spotify:track:' + tracks[j] + '&bucket=audio_summary'
             };
             request(options, generateFileCallback(j));
         }

@@ -20,14 +20,14 @@
             left = (screen.width / 2) - (width / 2),
             top = (screen.height / 2) - (height / 2);
 
-        window.addEventListener("message", function(event) {
+        window.addEventListener('message', function(event) {
             var hash = JSON.parse(event.data);
             if (hash.type == 'access_token') {
                 callback(hash.access_token);
             }
         }, false);
 
-        var token = "";
+        var token = '';
 
 window.location = url;
 
@@ -54,14 +54,14 @@ window.location = url;
                     // loginButton.style.display = 'none';
                     // resultsPlaceholder.innerHTML = template(response);
                     var hash = window.location.hash;
-                    
+
 
                     if (hash) {
                       token = window.location.hash.split('&')[0].split('=')[1];
                       // target.postMessage(token, OAuthConfig.host);
                     }
 
-                    console.log("hash");
+                    console.log('hash');
                 });
         });
     });
