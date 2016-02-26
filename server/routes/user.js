@@ -3,7 +3,9 @@ var router = express.Router();
 var request = require('request');
 var knex = require('../db/knex');
 
-var d3data = require('../../dataParser.js')
+var bubblesData = require('../../dataParser.js');
+// var timeData = require('../../time.csv');
+
 
 router.get('/user', function(req, res, next) {
     // res.sendFile(process.cwd() + '/server/views/index.html');
@@ -11,8 +13,17 @@ router.get('/user', function(req, res, next) {
     res.sendFile(process.cwd() + '/server/views/index.html');
 });
 
-router.get('/dashboard/bubbles', function(req, res, next) {
-	res.send(d3data)
+router.get('/dashboard/:d3view', function(req, res, next) {
+	// console.log(req.params.d3view);
+	if (req.params.d3view === 'time') {
+		// res.send(timeData);
+		// console.log(process.cwd());
+		// console.log(__dirname);
+		res.sendFile(process.cwd() + '/time.csv');
+	} 
+	if (req.params.d3view === 'bubbles') {
+		res.send(bubblesData);	
+	}
 });
 
 

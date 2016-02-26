@@ -30,7 +30,12 @@ angular.module('spotifeyeApp')
         })
         .when('/dashboard/edgeBundle', {
             templateUrl: 'views/edgeTemplate.html',
-            controller: 'EdgeController'
+            controller: 'TimeController'
+            // resolve: {
+            //     TimeData: function($http){
+            //         return $http.get('user/dashboard/time');
+            //     }
+            // }
         })
         .when('/dashboard/chords', {
             templateUrl: 'views/chordTemplate.html',

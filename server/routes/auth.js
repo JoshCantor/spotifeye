@@ -85,13 +85,14 @@ function addTracksToDB(items, user_id) {
         var preview_url = items[i].track.preview_url;
         var explicit = items[i].track.explicit;
         var duration_ms = items[i].track.duration_ms;
+        var added_at = items[i].added_at;
 
         knex('tracks').where({track_id:track_id})
-        .then(generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id));
+        .then(generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id, added_at));
     }
 }
 
-function generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id){
+function generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id, added_at){
     knex('tracks').where({track_id:track_id}).then(function(data){
         if(data.length === 0){
             knex('tracks')
@@ -109,8 +110,8 @@ function generateInsertCB(track_id, track_name, track_popularity, track_art, pre
     });
     knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
         if(rows.length === 0){
-            knex('savedtracks').insert({user_id:user_id,track_id:track_id}).then(function(){
-                // console.log("does it log?")
+            knex('savedtracks').insert({user_id:user_id,track_id:track_id,added_at:added_at}).then(function(){
+                console.log(added_at);
             });
         }
     });

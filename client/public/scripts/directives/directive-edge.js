@@ -4,164 +4,82 @@
 
 angular.module('spotifeyeApp')
 
-.directive('edge', function(edgeService) {
+.directive('time', function() {
     return {
+        scope: {
+            // 'timeService': '='
+        },
         link: function(scope, element, attrs) {
+            // console.log(timeService);
+            // var timeService = scope.timeService;
+            var parseTime = d3.time.format.utc("%H:%M").parse,
+                midnight = parseTime("00:00");
 
-            var diameter = 960,
-                radius = diameter / 2,
-                innerRadius = radius - 120;
+            var margin = { top: 30, right: 30, bottom: 30, left: 30 },
+                width = 960 - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom;
 
-            var cluster = d3.layout.cluster()
-                .size([360, innerRadius])
-                .sort(null)
-                .value(function(d) {
-                    return d.size;
-                });
+            var x = d3.time.scale.utc()
+                .domain([midnight, d3.time.day.utc.offset(midnight, 1)])
+                .range([0, width]);
 
-            var bundle = d3.layout.bundle();
+            var y = d3.scale.linear()
+                .range([height, 0]);
 
-            var line = d3.svg.line.radial()
-                .interpolate('bundle')
-                .tension(.85)
-                .radius(function(d) {
-                    return d.y;
-                })
-                .angle(function(d) {
-                    return d.x / 180 * Math.PI;
-                });
+            var svg = d3.select(".time").append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-            var svg = d3.select('.edge').append('svg')
-                .attr('width', diameter)
-                .attr('height', diameter)
-                .append('g')
-                .attr('transform', 'translate(' + radius + ',' + radius + ')');
+            d3.csv("/user/dashboard/time", type, function(error, data) {
+                console.log('inside csv!');
+                console.log(data);
+                if (error) throw error;
 
-            var link = svg.append('g').selectAll('.link'),
-                node = svg.append('g').selectAll('.node');
+                y.domain([0, d3.max(data, function(d) {
+                    return d.rate; })]);
 
-            var nodes = cluster.nodes(packageHierarchy(edgeService)),
-                links = packageImports(nodes);
+                svg.append("g")
+                    .attr("class", "axis axis--x")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.svg.axis()
+                        .scale(x)
+                        .orient("bottom")
+                        .tickFormat(d3.time.format.utc("%I %p")));
 
-            link = link
-                .data(bundle(links))
-                .enter().append('path')
-                .each(function(d) {
-                    d.source = d[0], d.target = d[d.length - 1];
-                })
-                .attr('class', 'link')
-                .attr('d', line);
+                svg.append("g")
+                    .attr("class", "dots")
+                    .selectAll("path")
+                    .data(data)
+                    .enter().append("path")
+                    .attr("transform", function(d) {
+                        return "translate(" + x(d.time) + "," + y(d.rate) + ")"; })
+                    .attr("d", d3.svg.symbol()
+                        .size(40));
 
-            node = node
-                .data(nodes.filter(function(n) {
-                    return !n.children;
-                }))
-                .enter().append('text')
-                .attr('class', 'node')
-                .attr('dy', '.31em')
-                .attr('transform', function(d) {
-                    return 'rotate(' + (d.x - 90) + ')translate(' + (d.y + 8) + ',0)' + (d.x < 180 ? '' : 'rotate(180)');
-                })
-                .style('text-anchor', function(d) {
-                    return d.x < 180 ? 'start' : 'end';
-                })
-                .text(function(d) {
-                    return d.key;
-                })
-                .on('mouseover', mouseovered)
-                .on('mouseout', mouseouted);
+                var tick = svg.append("g")
+                    .attr("class", "axis axis--y")
+                    .call(d3.svg.axis()
+                        .scale(y)
+                        .tickSize(-width)
+                        .orient("left"))
+                    .select(".tick:last-of-type");
 
-            function mouseovered(d) {
-                node
-                    .each(function(n) {
-                        n.target = n.source = false;
-                    });
+                var title = tick.append("text")
+                    .attr("dy", ".32em")
+                    .text("saves per hour");
 
-                link
-                    .classed('link--target', function(l) {
-                        if (l.target === d) return l.source.source = true;
-                    })
-                    .classed('link--source', function(l) {
-                        if (l.source === d) return l.target.target = true;
-                    })
-                    .filter(function(l) {
-                        return l.target === d || l.source === d;
-                    })
-                    .each(function() {
-                        this.parentNode.appendChild(this);
-                    });
+                tick.select("line")
+                    .attr("x1", title.node().getBBox().width + 6);
+            });
 
-                node
-                    .classed('node--target', function(n) {
-                        return n.target;
-                    })
-                    .classed('node--source', function(n) {
-                        return n.source;
-                    });
-            }
-
-            function mouseouted(d) {
-                link
-                    .classed('link--target', false)
-                    .classed('link--source', false);
-
-                node
-                    .classed('node--target', false)
-                    .classed('node--source', false);
-            }
-
-            d3.select(self.frameElement).style('height', diameter + 'px');
-
-            // Lazily construct the package hierarchy from class names.
-            function packageHierarchy(edgeService) {
-                var map = {};
-
-                function find(name, data) {
-                    var node = map[name],
-                        i;
-                    if (!node) {
-                        node = map[name] = data || {
-                            name: name,
-                            children: []
-                        };
-                        if (name.length) {
-                            node.parent = find(name.substring(0, i = name.lastIndexOf('.')));
-                            node.parent.children.push(node);
-                            node.key = name.substring(i + 1);
-                        }
-                    }
-                    return node;
-                }
-
-                edgeService.forEach(function(d) {
-                    find(d.name, d);
-                });
-
-                return map[''];
-            }
-
-            // Return a list of imports for the given array of nodes.
-            function packageImports(nodes) {
-                var map = {},
-                    imports = [];
-
-                // Compute a map from name to node.
-                nodes.forEach(function(d) {
-                    map[d.name] = d;
-                });
-
-                // For each import, construct a link from the source to target node.
-                nodes.forEach(function(d) {
-                    if (d.imports) d.imports.forEach(function(i) {
-                        imports.push({
-                            source: map[d.name],
-                            target: map[i]
-                        });
-                    });
-                });
-
-                return imports;
+            function type(d) {
+                d.rate = +d.count / 327 * 60; // January 8 to November 30
+                d.time = parseTime(d.time);
+                d.time.setUTCHours((d.time.getUTCHours() + 24 - 7) % 24);
+                return d;
             }
         }
-    }
+    };
 });
