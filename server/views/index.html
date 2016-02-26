@@ -17,12 +17,15 @@
 </head>
 
 <body>
-    <div class="main_wrapper">
+    <div>
         <div>
-            <!-- SIDE NAVBAR -->
+            <!--  topbar -->
             <nav class="nav">
                 <div class="burger"> <i class="fa fa-bars"></i>
                     <div class="burger_patty"></div>
+                    <div id="logo"></div>
+                    <div id='nav_spacer'></div>
+                    <div id="nav_login"><a class="btn inset" href="/auth/spotify" id="btn-login">LOGIN</a></div>
                 </div>
 
                 <!-- MENU -->
@@ -32,33 +35,12 @@
                         <a href="#2" class="nav_link c-yellow scrolly">
                             <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
                     </li>
-
-                    <li class="nav_item">
-                        <a href="#3" class="nav_link c-red">
-                            <img src="media/two.png" alt="two_icon" style="height: 40px"></a>
-                    </li>
-
-                    <li class="nav_item">
-                        <a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
-                        </a>
-                    </li>
                 </ul>
             </nav>
 
             <!-- LOGIN TO SPOTIFY -->
             <section class="panel b-yellow" id="2">
-                <article class="panel_wrapper">
-                    <div class="panel_content">
-                        <h1 class="panel_headline">
-                            {{ title }}
-                        </h1>
-                        <div class="panel_block"></div>
-                        <div class="wrap">
-                            <!-- LOGIN BUTTON -->
-                            <a class="btn inset" href="/auth/spotify" id="btn-login">LOGIN</a>
-                        </div>
-                    </div>
-                </article>
+
             </section>
 
             <!-- PANEL THREE -->
