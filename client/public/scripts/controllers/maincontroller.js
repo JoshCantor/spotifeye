@@ -13,8 +13,10 @@
      function MainController($scope, lockWindow) {
          $scope.hello = "hello";
          $scope.title = " spotifEYE";
-         $scope.lockWindow = lockWindow.showLogin;
-         console.log($scope.lockWindow);
+         $scope.lockWindow = lockWindow;
+     //     $scope.$watch('lockWindow', function(oldVal, newVal) {
+  			// console.log(oldVal, newVal);
+     //     });
      }
 
  })();

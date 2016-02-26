@@ -30,6 +30,4 @@ angular.module('spotifeyeApp')
 		}
 
 		$scope.lockWindow();
-
-
 	});

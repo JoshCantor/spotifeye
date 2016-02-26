@@ -6,7 +6,6 @@ angular.module("spotifeyeApp")
 
 		obj.hideLogin = function() {
 			obj.showLogin = false;
-			console.log('show', obj.showLogin);
 		}
 
 		return obj;
