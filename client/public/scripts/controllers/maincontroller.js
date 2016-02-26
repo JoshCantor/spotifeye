@@ -11,7 +11,6 @@
      MainController.$inject = ['$scope', 'lockWindow'];
      
      function MainController($scope, lockWindow) {
-         $scope.hello = "hello";
          $scope.title = " spotifEYE";
          $scope.lockWindow = lockWindow;
      //     $scope.$watch('lockWindow', function(oldVal, newVal) {
