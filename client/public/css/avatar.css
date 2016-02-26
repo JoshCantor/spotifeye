@@ -1,0 +1,14 @@
+.avatar-frame {
+  border: 2px solid #c7b89e;
+}
+
+.avatar-frame,
+.avatar-frame img {
+  width: 200px;
+  height: 200px;
+  -webkit-border-radius: 100px;
+  /* Saf3+, Chrome */
+  border-radius: 100px;
+  /* Opera 10.5, IE 9 */
+  /*-moz-border-radius: 30px;  Disabled for FF1+ */
+}

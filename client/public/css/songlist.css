@@ -1,0 +1,165 @@
+/*
+  Based from this article from Divya Manian -
+  http://nimbupani.com/using-background-clip-for-text-with-css-fallback.html
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+*,
+:before,
+:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+.songlist-wrapper {
+    text-align: center;
+    z-index: 0;
+}
+
+.songlist-title {
+    font-size: 2em;
+    position: relative;
+    margin: 0 auto 1em;
+    padding: 1em 1em .25em 1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+.songlist-title:after {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 240px;
+    height: 4px;
+    margin-left: -120px;
+    content: '';
+    background-color: #fff;
+}
+
+/* Clip text element */
+.clip-text {
+    font-size: 6em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    margin: .25em;
+    padding: .5em .75em;
+    text-align: center;
+    /* Color fallback */
+    color: #fff;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.clip-text:before,
+.clip-text:after {
+    position: absolute;
+    content: '';
+}
+
+/* Background */
+.clip-text:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+}
+
+/* Text Background (black zone) */
+.clip-text:after {
+    position: absolute;
+    z-index: -1;
+    top: .125em;
+    right: .125em;
+    bottom: .125em;
+    left: .125em;
+    background-color: #000;
+}
+
+/* Change the background position to display letter when the black zone isn't here */
+.clip-text--no-textzone:before {
+    background-position: -.65em 0;
+}
+
+.clip-text--no-textzone:after {
+    content: none;
+}
+
+/* Use Background-size cover for photo background and no-repeat background */
+.clip-text--cover,
+.clip-text--cover:before {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+            background-size: cover;
+}
+
+/* Background image from http://thepatternlibrary.com/ and http://lorempixel.com */
+.clip-text_one {
+    background-image: url(http://lorempixel.com/480/200/abstract/7);
+}
+
+.clip-text_two {
+    background-image: url(http://lorempixel.com/480/200/abstract);
+}
+
+.clip-text_tree {
+    background-image: url(http://lorempixel.com/480/200/abstract/2);
+}
+
+.clip-text_four {
+    background-image: url(http://lorempixel.com/480/200/abstract/4);
+}
+
+.clip-text_five {
+    background-image: url(http://lorempixel.com/480/200/abstract/5);
+}
+
+.clip-text_six {
+    background-image: url(http://lorempixel.com/480/200/abstract/9);
+}
+
+.clip-text_seven {
+    background-image: url(http://lorempixel.com/480/200/abstract/8);
+}
+
+.clip-text_eight {
+    background-image: url(http://lorempixel.com/410/200/people);
+}
+
+.clip-text_nine {
+    background-image: url(http://lorempixel.com/480/200/nightlife);
+}
+
+.clip-text_ten {
+    background-image: url(http://lorempixel.com/480/200/nightlife/8);
+}
+
+.clip-text_eleven {
+    background-image: url(http://lorempixel.com/480/200/fashion/10/cc);
+    background-size: cover;
+}
+
+.clip-text_twelve {
+    background-image: url(http://lorempixel.com/480/200/people/7/cc);
+}
+
+.clip-text_thirteen {
+    background-image: url(http://lorempixel.com/480/200/food/5/cc);
+}
+
+.clip-text_fourteen {
+    background-image: url(http://lorempixel.com/480/200/city/9/cc);
+}
+
+.clip-text_fifteen {
+    background-image: url(http://lorempixel.com/480/200/nightlife/5);
+}

@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="spotifeyeApp" ng-controller="MainController as main">
 <head>
+    <meta charset="UTF-8">
+    <title>Spotifeye</title>
+    <!-- d3 -->
+    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!-- mau5 original plain css -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 
-	<meta charset="UTF-8">
-	<title>Spotifeye</title>
-	<!-- d3 -->
-	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-	<!-- mau5 original plain css -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" href="css/neon.css">
+    <link rel="stylesheet" href="css/songlist.css">
 
+    <link rel="stylesheet" href="css/avatar.css">
 
     <style type="text/css">
         .ng-view-hider.ng-leave {
@@ -27,46 +26,35 @@
             <nav class="nav">
                 <div class="burger"> <i class="fa fa-bars"></i>
                     <div class="burger_patty"></div>
-                    <div class="container">
-                      <div class="sign">
-                          <div class="neon-blue" id="title">S<span id="fade">pot</span>ifeye</div>
-                       </div>
-                    </div>
+                    <div class="hit-the-floor">Spotifeye</div>
                     <div id='nav_spacer'></div>
-                    <div id="nav_login"><a class="btn inset" href="/auth/spotify" id="btn-login">LOGIN</a></div>
+                    <div id="nav_login">
+                        <a class="btn inset" href="/auth/spotify" id="btn-login">LOGIN</a>
+                    </div>
                 </div>
-
-
-
-                <!-- MENU -->
+                <!-- slideout -->
                 <ul class="nav_list">
                     <!-- LANDING PAGE LOGIN BUTTON -->
                     <li class="nav_item">
                         <a href="#2" class="nav_link c-yellow scrolly">
-                            <h1>About Page</h1>
-                            <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
+                            <img src="media/one.png" alt="one_icon" style="height: 40px"><h1>About Page</h1>
+                        <p>
+                            about page text goes here
+                        </p></a>
+
                     </li>
                 </ul>
             </nav>
+        </div>
+        <div>
 
             <!-- LOGIN TO SPOTIFY -->
             <section class="panel b-yellow" id="2">
-
+                <div ng-view></div>
             </section>
 
             <!-- PANEL THREE -->
-            <section class="panel-dash b-red" id="3" >
-                <!-- <article class="panel_wrapper"> -->
-                <!-- <div ng-controller="DashboardController">
-                    <button ng-click="goToEdge()">Go To Hierarchical Edge Bundling</button>
-                    <button ng-click="goToBubbles()">Go To Bubbles</button>
-                    <button ng-click="goToChords()">Go To Chords</button>
-                    <button ng-click="goToDashboard()">Go To Dashboard</button>
-                </div> -->
-                <div ng-view>
-                </div>
-                <!-- </article> -->
-            </section>
+            <section class="panel-dash b-red" id="3" ></section>
         </div>
     </div>
 
@@ -89,12 +77,13 @@
     <script type="text/javascript" src="/scripts/directives/directive-chords.js"></script>
     <script type="text/javascript" src="/scripts/directives/directive-edge.js"></script>
 
-
     <!-- mau5 temp javascript - needs to be served with angular-->
     <script type="text/javascript" src="js/mau5/main-animation.js"></script>
-    <!-- <script type="text/javascript" src="js/mau5/reslist.js"></script> -->
-    <!-- <script type="text/javascript" src="js/mau5/textfield.js"></script> -->
-    <script type="text/javascript" src="js/mau5/hash.js"></script>
-    <script type="text/javascript" src="js/mau5/track.js"></script>
+    <!-- <script type="text/javascript" src="js/mau5/reslist.js"></script>
+-->
+<!-- <script type="text/javascript" src="js/mau5/textfield.js"></script>
+-->
+<script type="text/javascript" src="js/mau5/hash.js"></script>
+<script type="text/javascript" src="js/mau5/track.js"></script>
 </body>
 </html>

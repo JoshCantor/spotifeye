@@ -521,3 +521,17 @@ ul {
   box-shadow: 0 0 1px 15px rgba(138, 59, 88, 0.4), 0 0 1px 30px rgba(138, 59, 88, 0.1), 0 0 1px 45px rgba(138, 59, 88, 0.1);
   transform: rotate(45deg);
 }
+
+.nav_title {
+    color: white;
+    font-family: Oswald;
+    font-size: 100px;
+}
+
+.hit-the-floor {
+color: #fff;
+font-size: 9em;
+font-weight: bold;
+font-family: Helvetica;
+text-shadow: 0 1px 0 #2b3033, 0 1px 0 #272b2e, 0 1px 0 #272b2e, 0 1px 0 #272b2e, 0 1px 0 #272b2e, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 2px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 5px 5px rgba(0,0,0,.2), 0 5px 5px rgba(0,0,0,.15);
+}
