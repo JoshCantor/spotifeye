@@ -15,6 +15,10 @@ angular.module('spotifeyeApp')
         'self',
         'https://p.scdn.co/**']);
     $routeProvider
+        .when('/', {
+            templateUrl: 'views/login.html',
+            controller: 'LoginController'
+        })
         .when('/dashboard/user/:user_id', {
             templateUrl: 'views/dashboard.html',
             controller: 'DashboardController'

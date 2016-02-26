@@ -1,28 +1,33 @@
 <link rel="stylesheet" type="text/css" href="css/grid100.css">
 <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="border" style="border:none; text-align:center">
-                <h3 class="hit-the-floor-dash">{{displayName}}</h3>
-                <br>
-                <div class="avatar-frame" style="border: none;">
-                    <img src="{{picture}}" style="width: 200px; height: 200px; border-radius: 100px; -webkit-border-radius:100px"></div>
-            </div>
-        </div>
-        <div class="col-md-6" style="text-align:center">
-            <div ng-repeat="n in artArray track by $index">
-                <div ng-if="$index < 5" class="song-preview">
-                    <img src="{{n[0].album_art}}" height="100px" width="100px" style="margin-bottom: 10px;">
-                    <a onclick="this.firstChild.play()" class="button">
-                        <audio controls src="{{n[0].preview_url}}"></audio>
-                    </a>
+
+<section class="panel b-red" id="3" ng-hide="lockWindow.showLogin" >
+    <article class="panel_wrapper"> 
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="border" style="border:none; text-align:center">
+                        <h3 class="hit-the-floor-dash">{{displayName}}</h3>
+                        <br>
+                        <div class="avatar-frame" style="border: none;">
+                            <img src="{{picture}}" style="width: 200px; height: 200px; border-radius: 100px; -webkit-border-radius:100px"></div>
+                    </div>
+                </div>
+                <div class="col-md-6" style="text-align:center">
+                    <div ng-repeat="n in artArray track by $index">
+                        <div ng-if="$index < 5" class="song-preview">
+                            <img src="{{n[0].album_art}}" height="100px" width="100px" style="margin-bottom: 10px;">
+                            <a onclick="this.firstChild.play()" class="button">
+                                <audio controls src="{{n[0].preview_url}}"></audio>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" style="text-align:center">
+                    <button class="btn inset button-bottom" id="btn-login" ng-click="goToBubbles()">Analyze Your Music</button>
+                    <button class="btn inset button-top" id="btn-login" ng-click="goToTime()">View Your Songs Saved Versus Time of Day</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-3" style="text-align:center">
-            <button class="btn inset button-top" id="btn-login" ng-click="goToTime()">View Your Song Save Versus Time of Day</button>
-            <button class="btn inset button-bottom" id="btn-login" ng-click="goToBubbles()">Analyze Your Music</button>
-        </div>
-    </div>
-</div>
+    </article>  
+</section>

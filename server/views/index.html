@@ -3,7 +3,7 @@
 <head>
 
 	<meta charset="UTF-8">
-	<title>Spotifeye</title>
+	<title>SpotifEYE</title>
 	<!-- d3 -->
 	<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -20,62 +20,32 @@
 
 <body>
     <div>
-        <div>
-            <!-- SIDE NAVBAR -->
-            <nav class="nav">
-                <div class="burger"> <img src="media/eyecon.png" alt="" style="height: 50px; width: 50px">
-                    <div class="burger_patty"></div>
-                </div>
+        <!-- SIDE NAVBAR -->
+        <nav class="nav">
+            <div class="burger"> <img src="media/eyecon.png" alt="" style="height: 50px; width: 50px">
+                <div class="burger_patty"></div>
+            </div>
 
-                <!-- MENU -->
-                <ul class="nav_list">
-                    <!-- LANDING PAGE LOGIN BUTTON -->
-                    <li class="nav_item">
-                        <a href="#2" class="nav_link c-yellow scrolly">
-                            <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
-                    </li>
+            <!-- MENU -->
+            <ul class="nav_list">
+                <!-- LANDING PAGE LOGIN BUTTON -->
+                <li class="nav_item">
+                    <a href="#2" class="nav_link c-yellow scrolly">
+                        <img src="media/one.png" alt="one_icon" style="height: 40px"></a>
+                </li>
 
-                    <li class="nav_item">
-                        <a href="#3" class="nav_link c-red">
-                            <img src="media/two.png" alt="two_icon" style="height: 40px"></a>
-                    </li>
+                <li class="nav_item">
+                    <a href="#3" class="nav_link c-red">
+                        <img src="media/two.png" alt="two_icon" style="height: 40px"></a>
+                </li>
 
-                    <li class="nav_item">
-                        <a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- LOGIN TO SPOTIFY -->
-            <section class="panel b-yellow" id="2" ng-show="lockWindow.showLogin">
-                <article class="panel_wrapper">
-                    <div class="panel_content">
-                        <h1 class="hit-the-floor">
-                            {{ title }}
-                        </h1>
-                        <div class="panel_block"></div>
-                        <div class="wrap">
-                            <!-- LOGIN BUTTON -->
-                            <a class="btn inset" href="/auth/spotify" id="btn-login" ng-click='hideDiv()'>LOGIN</a>
-                        </div>
-                    </div>
-                </article>
-            </section>
-
-            <!-- PANEL THREE -->
-            <section class="panel b-red" id="3" ng-hide="lockWindow.showLogin" >
-                <article class="panel_wrapper">
-
-                <div ng-view>
-
-
-                </div>
-
-
-                <!-- </article> -->
-            </section>
-        </div>
+                <li class="nav_item">
+                    <a href="#4" class="nav_link c-green"> <i class="fa fa-music"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div ng-view></div>
     </div>
 
     <!-- angular -->
@@ -89,6 +59,7 @@
     <!-- app scripts -->
     <script type="text/javascript" src="/app.js"></script>
     <script type="text/javascript" src="/scripts/controllers/maincontroller.js"></script>
+    <script type="text/javascript" src="/scripts/controllers/logincontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/bubblescontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/timecontroller.js"></script>
     <script type="text/javascript" src="/scripts/controllers/dashboardcontroller.js"></script>
