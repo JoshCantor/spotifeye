@@ -5,7 +5,7 @@ require('dotenv').load();
 
 var knex = require('../db/knex');
 
-var redirect_uri = "http://localhost:3000/auth/spotify/callback";
+var redirect_uri = "http://localhost:5000/auth/spotify/callback";
 
 router.get('/spotify', function(req, res){
     var scope = 'user-read-private user-read-email playlist-read-private streaming user-library-read';
@@ -18,7 +18,7 @@ router.get('/spotify/callback', function(req, res) {
         url: 'https://accounts.spotify.com/api/token',
         form: {
             code: code,
-            redirect_uri: 'http://localhost:3000/auth/spotify/callback',
+            redirect_uri: 'http://localhost:5000/auth/spotify/callback',
             grant_type: 'authorization_code'
         },
         headers: {
@@ -47,6 +47,7 @@ router.get('/spotify/callback', function(req, res) {
                         var items = [];
                         getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
                         res.redirect('/#/dashboard/user/'+user_id);
+                        // res.redirect('/user/'+user_id+'/albumart')
                     });
                 }
                 else {
@@ -56,6 +57,7 @@ router.get('/spotify/callback', function(req, res) {
                     var items = [];
                     getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
                     res.redirect('/#/dashboard/user/'+user_id);
+                    // res.redirect('/user/'+user_id+'/albumart')
                 }
             });
         });
@@ -83,13 +85,14 @@ function addTracksToDB(items, user_id) {
         var preview_url = items[i].track.preview_url;
         var explicit = items[i].track.explicit;
         var duration_ms = items[i].track.duration_ms;
+        var added_at = items[i].added_at;
 
         knex('tracks').where({track_id:track_id})
-        .then(generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id));
+        .then(generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id, added_at));
     }
 }
 
-function generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id){
+function generateInsertCB(track_id, track_name, track_popularity, track_art, preview_url, explicit, duration_ms, user_id, added_at){
     knex('tracks').where({track_id:track_id}).then(function(data){
         if(data.length === 0){
             knex('tracks')
@@ -107,8 +110,8 @@ function generateInsertCB(track_id, track_name, track_popularity, track_art, pre
     });
     knex('savedtracks').where({user_id:user_id,track_id:track_id}).then(function(rows){
         if(rows.length === 0){
-            knex('savedtracks').insert({user_id:user_id,track_id:track_id}).then(function(){
-                // console.log("does it log?")
+            knex('savedtracks').insert({user_id:user_id,track_id:track_id,added_at:added_at}).then(function(){
+                console.log(added_at);
             });
         }
     });

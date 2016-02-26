@@ -11,14 +11,13 @@ angular.module('spotifeyeApp')
         },
         link: function(scope, element, attrs) {
             var bubbleService = scope.bubbleService;
-            console.log(bubbleService);
-            console.log('scope', scope);
+
             var margin = 20,
-                diameter = 700;
+                diameter = 1300;
 
             var color = d3.scale.linear()
                 .domain([-1, 5])
-                .range(['hsl(152,80%,80%)', 'hsl(228,30%,40%)'])
+                .range(['hsl(180,93%,51%)', 'hsl(228,30%,40%)'])
                 .interpolate(d3.interpolateHcl);
 
             var pack = d3.layout.pack()
@@ -48,7 +47,7 @@ angular.module('spotifeyeApp')
                     return d.children ? color(d.depth) : null;
                 })
                 .on('click', function(d) {
-                    if (focus !== d) zoom(d), d3.event.stopPropagation();
+                    if (focus !== d) zoom(d); d3.event.stopPropagation();
                 });
 
             var text = svg.selectAll('text')

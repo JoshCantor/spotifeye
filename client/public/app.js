@@ -10,7 +10,10 @@
 
 angular.module('spotifeyeApp')
 
-.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider','$sceDelegateProvider', function($routeProvider,$sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'self',
+        'https://p.scdn.co/**']);
     $routeProvider
         .when('/dashboard/user/:user_id', {
             templateUrl: 'views/dashboard.html',
@@ -27,7 +30,12 @@ angular.module('spotifeyeApp')
         })
         .when('/dashboard/edgeBundle', {
             templateUrl: 'views/edgeTemplate.html',
-            controller: 'EdgeController'
+            controller: 'TimeController'
+            // resolve: {
+            //     TimeData: function($http){
+            //         return $http.get('user/dashboard/time');
+            //     }
+            // }
         })
         .when('/dashboard/chords', {
             templateUrl: 'views/chordTemplate.html',

@@ -11,7 +11,7 @@ knex.column('track_id').select().from('tracks').then(function(data) {
     for (var i = 0; i < data.length; i++) {
         tracksToCheck[data[i].track_id] = true;
     }
-    fs.readdir('./jsondata', function(err, files) {
+    fs.readdir('../jsondata', function(err, files) { // one or two periods?
         if (err) throw err;
         files.forEach(function(file) {
         	var fileName = file.split('.')[0];
@@ -26,12 +26,14 @@ knex.column('track_id').select().from('tracks').then(function(data) {
         }
         console.log('final array length = ',tracks.length);
         console.log('skipped track count = ',count);
-        for (var j = 0; j<20; j++) {
+        var offset = 0;
+        for (var j = 0+ offset; j<20 + offset; j++) {
             var options = {
                 url: "http://developer.echonest.com/api/v4/track/profile?api_key=" + process.env.echonest_key + "&format=json&id=spotify:track:" + tracks[j] + "&bucket=audio_summary"
             };
             request(options, generateFileCallback(j));
         }
+        console.log(Date().split(' ')[4].split(':')[1]);
     });
 });
 
@@ -49,6 +51,4 @@ function generateFileCallback(j) {
         }
     };
 }
-
-
 
