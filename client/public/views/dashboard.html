@@ -11,15 +11,14 @@
             </div>
         </div>
         <div class="col-md-6" style="text-align:center">
-            <div ng-repeat="n in artArray track by $index | limitTo: 5">
-                <div ng-if="$index < 5" class="song-preview">
-                    <div id="f1_container">
-                        <div id="f1_card" class="shadow">
+            <div class='onealbum' ng-repeat="n in artArray track by $index" ng-if="$index < 16">
+                    <div class="f1_container">
+                        <div class="f1_card shadow">
                             <div class="front face">
                                 <img class="albumart" src="{{n[0].album_art}}" />
                             </div>
                             <div class="back face center">
-                                <h3>{{n[0].track_name}}</h3>
+                                <h4>{{n[0].track_name}}</h4>
                                 <!-- <h3>Disclosure</h3> -->
                                 <a onclick="this.firstChild.play()" class="button">
                                     <audio controls src="{{n[0].preview_url}}"></audio>
@@ -27,7 +26,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
         <div class="col-md-3" style="text-align:center">

@@ -25,7 +25,7 @@ angular.module('spotifeyeApp')
         })
 
         $http.get('/user/' + user_id + '/albumart').then(function(art) {
-            // console.log(art.data);
+
             $scope.artArray = art.data;
         });
 
