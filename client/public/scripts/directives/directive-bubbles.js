@@ -37,8 +37,8 @@ angular.module('spotifeyeApp')
                 .attr('width', diameter)
                 .attr('height', diameter)
                 .append('g')
-                .attr('transform', 'translate(' + diameter / 2 + ',' + diameter / 2 + ')');
-
+                .attr('transform', 'translate(' + diameter / 2 + ',' + (diameter / 2.6) + ')');
+            // console.log(diameter/2);
             var focus = bubbleService,
                 nodes = pack.nodes(bubbleService),
                 view;
