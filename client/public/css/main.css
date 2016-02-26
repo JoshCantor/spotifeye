@@ -247,6 +247,7 @@ ul {
 
 .panel_content--active {
     opacity           : 1;
+    margin-bottom: 500px;
     transform         : none;
     -ms-transform     : none;
     -webkit-transform : none;

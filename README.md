@@ -1,25 +1,24 @@
 #SpotifEYE.com
 
 ##Description
-    An Angular SPA, with **interactive visualizations** + functionality layered on top of Spotify. SpotifEYE uses the Spotify echonest and webAPIs to compile and visulaize music data.
+  	spotifEYE.com visualizes musical traits of your saved tracks from Spotify using the Spotify and EchoNest API. 
 
 ## Who uses it?
     Music lovers and their friends.
 
-## What outputs do they need?
-    User needs to log into spotify using their credentials or facebook.
+## What you need to provide?
+    All you need to do is allow our application to access your saved tracks on Spotify and we will take care of the rest!!!!!
 
-## What inputs are needed to generate those outputs?
+## What will we give you?
+	We will present a dashboard with beautiful visualizations of the acoustical traits of all your saved songs!
     
 
-##A list of technologies that you plan to use
+##What technoligies was this application built with?
     * D3
-    * Angular:
-        * ngAnimate
-        * ngRoute
+    * Angular.JS
     * Express & Node
-    * Knex and Posql
-    * HTML
+    * Knex and postgreSQL
+    * HTML/CSS
     * Oath 2.0
     * Spotify and Echonest APIs
     * Heroku
@@ -29,15 +28,10 @@
 
 ## Feature List:
     * User can:
-        * compile playlists visually/visulize playlist
-        * build unique playlist based on echonest acousic attributes
-            + other factors
-        * User can Login
-        * User can signup
-        * User can see visualize patterns from spotify builtin playlists.
-        * User can access his/her playlists
-        * User can listen to music.
-        * User can connect with other User.
+    	* Authorize us to use their Spotify saved songs data
+    	* Access their personalized dashboard
+    	* Listen to 30 second snippets of each of their saved tracks on their personalized dashboard
+    	* Can visualize their saved music's acoustical data  
 
 
 
