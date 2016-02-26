@@ -11,13 +11,18 @@ angular.module('spotifeyeApp')
         },
         link: function(scope, element, attrs) {
             var bubbleService = scope.bubbleService;
-
+            // debugger;
             var margin = 20,
-                diameter = 1300;
+                diameter = 0.8 * window.innerWidth;
 
             var color = d3.scale.linear()
                 .domain([-1, 5])
                 .range(['hsl(180,93%,51%)', 'hsl(228,30%,40%)'])
+                .interpolate(d3.interpolateHcl);
+
+            var color2 = d3.scale.linear()
+                .domain([0, 1.0])
+                .range(['#C7F60E', 'rgb(249,38,114)'])
                 .interpolate(d3.interpolateHcl);
 
             var pack = d3.layout.pack()
@@ -44,7 +49,16 @@ angular.module('spotifeyeApp')
                     return d.parent ? d.children ? 'node' : 'node node--leaf' : 'node node--root';
                 })
                 .style('fill', function(d) {
-                    return d.children ? color(d.depth) : null;
+                    // debugger;
+                    if (d.depth === 0) {
+                        return '#C7F60E';
+                    } else if (d.depth === 3) {
+                        // return 'rgba(249,38,114,'+ d.parent.min + ')';
+                        return color2(d.parent.min);
+                    } else {
+                        return d.children ? color(d.depth) : null;
+                    }
+                    
                 })
                 .on('click', function(d) {
                     if (focus !== d) zoom(d), d3.event.stopPropagation();
@@ -57,6 +71,25 @@ angular.module('spotifeyeApp')
                 .style('fill-opacity', function(d) {
                     return d.parent === bubbleService ? 1 : 0;
                 })
+                .style("font-size", function(d) { 
+                    // debugger;
+                    // return Math.min(1 * d.r, (1 * d.r - 8) / this.getComputedTextLength() * 24) + "px"; })
+                    if (d.depth === 1) {
+                        return ((d.r * 3.4)/d.name.length + 0) + "px";    
+                    }
+                    if (d.depth === 2) {
+                        return ((d.r * 8)/d.name.length + 0) + "px";    
+                    }
+                    if (d.depth === 3) {
+                        // console.log((d.r * 16)/d.name.length + 0);
+                        // console.log(Math.max(((d.r * 16)/d.name.length + 0),6));
+                        return Math.max(((d.r * 16)/d.name.length + 0),12) + "px";    
+                    }
+
+                })
+                // .style('transform', function(d){
+                //     return 'translate(0px,10px)';
+                // })
                 .style('display', function(d) {
                     return d.parent === bubbleService ? 'inline' : 'none';
                 })
