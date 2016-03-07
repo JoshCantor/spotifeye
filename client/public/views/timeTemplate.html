@@ -1,32 +1,53 @@
 <style>
 .dots path {
-  fill: steelblue;
-  stroke: steelblue;
-  stroke-width: 25px;
+    fill: steelblue;
+    stroke: steelblue;
+    stroke-width: 25px;
 }
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 .axis--y line {
-  stroke-opacity: 0.2;
+    stroke-opacity: 0.2;
 }
 
 .axis--y path {
-  stroke: none;
+    stroke: none;
 }
 
 .axis text {
-  font: 10px sans-serif;
+    font: 10px sans-serif;
 }
 
+.back {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgb(0, 191, 229);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
 </style>
 <section class="panel b-red" id="3">
-  <div class="time" time>
-  	<h1 style='text-align: center;'>Song saves versus time of day</h1>
-  </div>
-<section></section>
+  <button class="back" onclick="goBack()">Back to Dashboard</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
+    <div class="time" time>
+        <h1 style='text-align: center;'>Song saves versus time of day</h1>
+    </div>
+    <section></section>

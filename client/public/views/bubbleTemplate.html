@@ -54,6 +54,20 @@
       float:right;
       text-align: right;
     }
+
+    .back {
+      position:absolute;
+      top:10px;
+      right:10px;
+      background-color: rgb(0, 191, 229); /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
 /*  .small {
     display: none;
   }
@@ -63,6 +77,14 @@
 */
 </style>
 <section class="panel b-red" id="3">
+  <button class="back" onclick="goBack()">Back to Dashboard</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
+
   <div class="bubbles" bubbles bubble-service=bubbleData>
       <h1 style='text-align: center;'>Acoustic Attributes</h1>
       <div id='bubble_legend'>
