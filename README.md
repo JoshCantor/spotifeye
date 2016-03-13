@@ -32,3 +32,8 @@
     	* Listen to 30 second snippets of saved tracks 
     	* Visualize their saved music's acoustic attributes 
 
+##Who built this?
+	Jon Tejada
+	Josh Cantor
+	Shik Banda
+	Mauricio Andrades
