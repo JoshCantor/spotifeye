@@ -1,7 +1,9 @@
-#SpotifEYE.com
+#SpotifEye.com
+
+[Click to go to SpotifEye](http://www.spotifeye.com)
 
 ##Description
-  	spotifEYE.com visualizes musical traits of your saved tracks from Spotify using the Spotify and EchoNest APIs. 
+  	spotifEye.com visualizes musical traits of your saved tracks from Spotify using the Spotify and EchoNest APIs. 
 
 ## Who uses it?
     Music lovers and their friends.
