@@ -15,7 +15,7 @@
 	We will present a dashboard with visualizations of the acoustic traits of all your saved songs!
     
 
-##What technoligies was this application built with?
+##What technologies was this application built with?
     * D3.js
     * AngularJS
     * Express.js & Node.js
@@ -28,7 +28,7 @@
 
 
 ## Feature List:
-    * Users can:
+    Users can:
     	* Authorize the app to use their Spotify saved songs data
     	* Access their personalized dashboard
     	* Listen to 30 second snippets of saved tracks 
