@@ -31,14 +31,12 @@ angular.module('spotifeyeApp')
         });
 
         $scope.goToBubbles = function() {
-            console.log('hopefully');
             $location.path('/dashboard/bubbles');
         };
 
 		$scope.lockWindow = function() {
 			lockWindow.hideLogin()
 		}
-        console.log('asdfa');
 		$scope.lockWindow();
 	});
 
