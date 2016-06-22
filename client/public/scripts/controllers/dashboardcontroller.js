@@ -13,6 +13,7 @@ angular.module('spotifeyeApp')
 
         $http.get('/user/' + user_id + '/info').then(function(data) {
             $scope.displayName = data.data[0].display_name;
+            console.log(data.data);
             $scope.picture = data.data[0].profile_pic;
             $location.hash('3');
             // $anchorScroll();
