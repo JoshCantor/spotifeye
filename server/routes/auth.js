@@ -29,6 +29,8 @@ router.get('/spotify/callback', function(req, res) {
         var access_token = bodyJSON.access_token;
         var refresh_token = bodyJSON.refresh_token;
 
+
+
         request.get('https://api.spotify.com/v1/me?access_token=' + access_token, function(error, response, body) {
 
             var userInfoJSON = JSON.parse(body);
@@ -41,23 +43,25 @@ router.get('/spotify/callback', function(req, res) {
                 if(data.length === 0){
                     knex('users').insert({ display_name: display_name, user_id: user_id, profile_pic:profile_pic })
                     .then(function(){ // INSERTS SONGS IF FIRST TIME LOGINING IN
-                        // request.get('https://api.spotify.com/v1/me/tracks?limit=50&access_token='+access_token, function(error, response,body){
-                        //     addTracksToDB(body,user_id)
-                        // })
                         var items = [];
                         getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
                         res.redirect('/#/dashboard/user/'+user_id);
-                        // res.redirect('/user/'+user_id+'/albumart')
                     });
-                }
-                else {
-                    // request.get('https://api.spotify.com/v1/me/tracks?limit=50&access_token='+access_token, function(error, response,body){
-                    //     addTracksToDB(body,user_id);
-                    // })
+                } else if(data[0].profile_pic !== profile_pic){
+                    knex('users').where({ user_id: user_id })
+                        .returning('profile_pic')
+                        .update( {profile_pic: profile_pic} )
+                        .then(function(newData) {
+                        });
+
                     var items = [];
                     getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
                     res.redirect('/#/dashboard/user/'+user_id);
-                    // res.redirect('/user/'+user_id+'/albumart')
+
+                } else {
+                    var items = [];
+                    getNext('https://api.spotify.com/v1/me/tracks?limit=50&access_token=', access_token, items, user_id);
+                    res.redirect('/#/dashboard/user/'+user_id);
                 }
             });
         });
